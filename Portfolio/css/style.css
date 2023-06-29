@@ -99,6 +99,13 @@ section#about p.about-text {
     
 }
 
+section#projects h1.projects-title {
+    font-size: 15vw;
+    color: #000000;
+    margin-top: 0;
+    margin-right: 30px;
+}
+
 section#contacts h1.contacts-title {
     font-size: 15vw;
     color: #000000;

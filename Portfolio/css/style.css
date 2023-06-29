@@ -103,7 +103,7 @@ section#about p.about-text {
     
 }
 
-section#about a.cv, section#projects a.personal-projects, section#projects a.work-projects {
+section#about a.cv, section#projects a.personal-projects, section#projects a.work-projects, section#personal-projects a.portfolio, section#personal-projects a.monster-game, section#work-projects a.letreiro-galeria {
     font-family: 'Lato Black', sans-serif;
     color: #000000;
     font-size: 3rem;

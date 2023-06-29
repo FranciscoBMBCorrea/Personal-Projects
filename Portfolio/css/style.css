@@ -7,8 +7,6 @@ body {
     --height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    /* Prevent scrolling */
 }
 
 h1 {
@@ -32,9 +30,7 @@ section#home {
     height: var(--height);
     background-color: #000000;
     justify-content: center;
-    opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 section#home h1.hello {
@@ -42,33 +38,22 @@ section#home h1.hello {
 }
 
 section#about {
-    opacity: 0;
-    /* Hide the about section by default */
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, height 0s linear 0.3s;
-    overflow: hidden;
-}
-
-section#about.show {
     display: flex;
     justify-content: center;
     background: #ffffff;
     padding: 0%;
-    opacity: 1;
-    /* Show the about section */
-    visibility: visible;
     height: var(--height);
     transition-delay: 0s;
 }
 
-section#about.show h1.about-title {
+section#about h1.about-title {
     font-size: 15vw;
     color: #000000;
     margin-top: 0;
     margin-right: 30px;
 }
 
-section#about.show p.about-text {
+section#about p.about-text {
     font-size: 3vw;
     color: #000000;
     padding: 0;

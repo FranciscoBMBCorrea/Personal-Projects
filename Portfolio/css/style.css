@@ -5,19 +5,23 @@
 html,
 body {
     --height: 100vh;
+    --black: #000000;
+    --white: #ffffff;
+    --font:'Lato Black', sans-serif;
+    
+    
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    font-family: 'Lato Black', sans-serif;
-    color: #ffffff;
+    font-family: var(--font);
     margin-bottom: 0;
 }
 
 p {
-    font-family: 'Lato Black', sans-serif;
-    color: #000000;
+    font-family: var(--font);
+    color: var(--black);
 }
 
 article {
@@ -27,7 +31,7 @@ article {
 }
 
 a {
-    color: #ffffff;
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -58,8 +62,8 @@ nav ul li {
 }
 
 nav ul li a {
-    font-family: 'Lato Black', sans-serif;
-    color: #ffffff;
+    font-family: var(--font);
+    color: var(--white);
 }
 
 section {
@@ -70,19 +74,20 @@ section {
 
 section#home {
     height: var(--height);
-    background-color: #000000;
+    background-color: var(--black);
     justify-content: center;
     visibility: visible;
 }
 
 section#home h1.hello {
-    font-size: 25vw;
+    font-size: 40vw;
+    color: var(--white);
 }
 
-section#about {
+section#about, section#projects, section#personal-projects, section#portfolio, section#monster-game, section#work-projects, section#letreiro-galeria, section#contacts {
     display: flex;
     justify-content: center;
-    background: #ffffff;
+    background: var(--white);
     padding: 0;
     height: var(--height);
     transition-delay: 0s;
@@ -90,7 +95,7 @@ section#about {
 
 section#about h1.about-title, section#projects h1.projects-title, section#contacts h1.contacts-title, section#personal-projects h1.personal-title, section#work-projects h1.work-title, section#portfolio h1.portfolio-title, section#letreiro-galeria h1.letreiro-galeria-title, section#monster-game h1.monster-game-title {
     font-size: 15vw;
-    color: #000000;
+    color: var(--black);
     margin-top: 0;
     padding-bottom: 0;
 }
@@ -104,10 +109,38 @@ section#about p.about-text {
 }
 
 section#about a.cv, section#projects a.personal-projects, section#projects a.work-projects, section#personal-projects a.portfolio, section#personal-projects a.monster-game, section#work-projects a.letreiro-galeria {
-    font-family: 'Lato Black', sans-serif;
-    color: #000000;
-    font-size: 3rem;
+    font-family: var(--font);
+    color: var(--black);
+    font-size: 2vw;
     font-weight: lighter;
     margin-top: 0%;
     padding-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+
+    html,
+    body {
+        border-radius: 50px;
+    }
+
+    nav ul li {
+        margin-left: 25px;
+    }
+
+    section#about p.about-text {
+        padding: 0;
+        margin-top: 0;
+        margin-right: 25%;
+        margin-left: 25%;
+        
+    }
+
+    section#about, section#projects, section#personal-projects, section#portfolio, section#monster-game, section#work-projects, section#letreiro-galeria, section#contacts {
+        flex-direction: column;
+    }
+
+    section#contacts figure.icons {
+        flex-basis: 25vh;
+    }
 }

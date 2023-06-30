@@ -1,16 +1,45 @@
-// JavaScript example to toggle the visibility of the about section, scroll to it, and disable scrolling
-var homeSection = document.getElementById('home');
-var aboutSection = document.getElementById('about');
+const homeSection = document.getElementById('home');
+const aboutSection = document.getElementById('about');
+
+const mail = document.getElementsByClassName('email-black');
+const linkedIn = document.getElementsByClassName('linkedin-black');
+const gitHub = document.getElementsByClassName('github-black');
+const instagram = document.getElementsByClassName('instagram-black');
+
+const elements = [...mail, ...linkedIn, ...gitHub, ...instagram];
 
 function showAboutSection() {
     aboutSection.classList.add('show');
     aboutSection.scrollIntoView({ behavior: 'smooth' });
-    document.body.style.overflow = 'auto'; // Enable scrolling
-    homeSection.style.opacity = 0; // Fade out the home section
+    document.body.style.overflow = 'auto';     
+    homeSection.style.opacity = 0; 
 }
 
-// Event listener for mouse click
+elements.forEach((element) => {
+  element.addEventListener('mouseover', () => {
+    const randomBackgroundColor = getRandomColor();
+    const randomFontColor = getRandomColor();
+
+    element.style.backgroundColor = randomBackgroundColor;
+    element.style.color = randomFontColor;
+  });
+
+  element.addEventListener('mouseout', () => {
+    element.style.backgroundColor = 'blue';
+    element.style.color = 'white';
+  });
+});
+
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * letters.length)];
+  }
+  return color;
+};
+
+
 document.addEventListener('click', showAboutSection);
 
-// Automatically show after 5 seconds
 setTimeout(showAboutSection, 5000);

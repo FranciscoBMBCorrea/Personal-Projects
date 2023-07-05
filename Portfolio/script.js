@@ -1,5 +1,7 @@
 const homeSection = document.getElementById('home');
 const aboutSection = document.getElementById('about');
+const projectsSection = document.getElementById('projects');
+
 
 const mail = document.getElementsByClassName('email-black');
 const linkedIn = document.getElementsByClassName('linkedin-black');

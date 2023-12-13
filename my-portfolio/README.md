@@ -45,7 +45,7 @@ npm start
 ```
 This will start the development server, and you can view your portfolio at http://localhost:3000 in your browser.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 I hope you enjoy exploring my portfolio! If you have any questions, feedback, or suggestions, feel free to reach out.
 

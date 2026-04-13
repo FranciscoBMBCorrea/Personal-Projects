@@ -1,61 +1,41 @@
-# Francisco Corrêa - Portfolio
+# Francisco Correa Portfolio
 
-Welcome to my personal portfolio! 🚀
+Portfolio pessoal construído com Next.js, Tailwind CSS e TypeScript para
+apresentar projetos de design de interiores, desenho 2D e visualizacao 3D numa
+experiencia minimalista, elegante e responsiva.
 
-This project showcases my skills, projects, and journey in software development. It's built using React to create an interactive and dynamic user experience.
+## Stack
 
-## Live Demo
+- Next.js 14
+- React 18
+- Tailwind CSS 4
+- Framer Motion
+- TypeScript
 
-Explore my portfolio live: [Francisco Corrêa - Portfolio](https://yourportfolio.com)
-(work in progress)
+## O que foi atualizado
 
-## Technologies Used
+- Remoção do conteúdo padrão do `create-next-app`
+- Conversão do styling para Tailwind CSS
+- Nova landing page orientada para portfolio de interiores e visualizacao 2D/3D
+- Linguagem visual minimalista com animacoes subtis
+- Metadados da aplicação alinhados com o portfólio
+- README corrigido para refletir a stack real do projeto
 
-- **React**: A JavaScript library for building user interfaces.
-- **React Router**: For handling navigation within the portfolio.
-- **Styled Components**: Used for styling components with a dynamic and flexible approach.
+## Desenvolvimento
 
-## Features
-
-1. **Project Showcase**: Explore a collection of projects I've worked on, each with its own details and technologies used.
-
-2. **About Me**: Learn more about me, my background, and my journey in software development.
-
-3. **Contact**: Find ways to get in touch with me. I'm open to collaborations, discussions, and feedback.
-
-## Getting Started
-
-### Prerequisites
-
-Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine.
-
-### Installation
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/FranciscoBMBCorrea/portfolio.git
-   cd portfolio
-   ```
-**Install Dependencies:**
 ```bash
 npm install
-```
-**Running the Development Server**
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-This will start the development server, and you can view my portfolio at  [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Aplicação disponível em [http://localhost:3000](http://localhost:3000).
 
-I hope you enjoy exploring my portfolio! If you have any questions, feedback, or suggestions, feel free to reach out.
+## Próximos passos sugeridos
 
-Happy coding! 
+- Substituir os projetos de exemplo por casos reais com imagens
+- Adicionar links de contacto e redes profissionais
+- Criar galerias para renders, plantas e moodboards
 
+## Licença
 
+Projeto licenciado sob a [MIT License](LICENSE).

@@ -4,32 +4,34 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "next typegen && tsc --noEmit",
     "slicemachine": "start-slicemachine"
   },
   "dependencies": {
-    "@prismicio/client": "^7.3.1",
-    "@prismicio/next": "^1.5.0",
-    "@prismicio/react": "^2.7.3",
+    "@prismicio/client": "^7.21.8",
+    "@prismicio/next": "^2.2.4",
+    "@prismicio/react": "^3.4.1",
     "framer-motion": "^12.38.0",
-    "next": "14.0.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^16.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.28",
+    "@slicemachine/adapter-next": "^0.3.95",
     "@tailwindcss/postcss": "^4.2.2",
-    "@types/node": "^20",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.4",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.3",
     "postcss": "^8.5.9",
-    "slice-machine-ui": "^1.21.2",
+    "slice-machine-ui": "^2.21.2",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5"
+    "typescript": "^6.0.2"
   }
 }

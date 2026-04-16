@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { ProjectPage } from '@/components/project-page'
@@ -24,6 +25,30 @@ export async function generateStaticParams() {
       slug: project.slug,
     })),
   )
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+
+  if (!isLocale(locale)) {
+    return {}
+  }
+
+  const project = getProject(locale as Locale, slug)
+
+  if (!project) {
+    return {}
+  }
+
+  return {
+    title: `${project.title} | Francisco Beça Múrias`,
+    description: project.summary,
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+      type: 'article',
+    },
+  }
 }
 
 export default async function ProjectRoutePage({ params }: Props) {

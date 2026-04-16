@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://franciscobecamurias.com'),
   title: 'Francisco Beça Múrias | Portfolio',
   description:
     'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, desenho 2D e visualizacao 3D.',

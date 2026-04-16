@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f8f3ea;
-  --color-background-soft: #fcfaf6;
-  --color-foreground: #221f1c;
-  --color-muted: #7b746d;
+  --color-background: #ead57b;
+  --color-background-soft: #f7efb8;
+  --color-foreground: #1f190f;
+  --color-muted: #6e5d37;
 }
 
 html {
@@ -13,9 +13,9 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top left, rgba(245, 226, 199, 0.72), transparent 24%),
-    radial-gradient(circle at 80% 20%, rgba(255, 240, 218, 0.9), transparent 22%),
-    linear-gradient(180deg, #faf6ee 0%, #f4efe6 100%);
+    radial-gradient(circle at top left, rgba(255, 247, 188, 0.9), transparent 24%),
+    radial-gradient(circle at 80% 20%, rgba(246, 223, 121, 0.72), transparent 22%),
+    linear-gradient(180deg, #f5e79c 0%, #e3c968 100%);
   color: var(--color-foreground);
   font-family:
     "Avenir Next",
@@ -23,6 +23,40 @@ body {
     "Helvetica Neue",
     sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.text-display {
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 0.84;
+  text-transform: uppercase;
+}
+
+.text-condensed {
+  font-family:
+    "Arial Narrow",
+    "Avenir Next Condensed",
+    "Helvetica Neue",
+    sans-serif;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.font-mono {
+  font-family:
+    "SF Mono",
+    "Space Mono",
+    "Courier New",
+    monospace;
+}
+
+.text-accent {
+  color: #bc6742;
 }
 
 body::before {
@@ -31,8 +65,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(55, 41, 24, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(55, 41, 24, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(67, 46, 13, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(67, 46, 13, 0.05) 1px, transparent 1px);
   background-size: 96px 96px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 85%);
 }
@@ -43,13 +77,29 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 30%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.1), transparent 30%);
+    linear-gradient(180deg, rgba(255, 252, 231, 0.18), transparent 30%),
+    linear-gradient(0deg, rgba(255, 247, 214, 0.08), transparent 30%);
 }
 
 img {
   max-width: 100%;
   display: block;
+}
+
+.grain-layer {
+  pointer-events: none;
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  animation: grain-shift 0.8s steps(1) infinite;
+}
+
+.grain-layer-light {
+  opacity: 0.03;
 }
 
 a {
@@ -59,4 +109,66 @@ a {
 ::selection {
   background: rgba(255, 184, 108, 0.32);
   color: var(--color-foreground);
+}
+
+.marquee-track {
+  width: max-content;
+  min-width: 100%;
+  animation: marquee-left 26s linear infinite;
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes grain-shift {
+  0% {
+    transform: translate(0);
+  }
+
+  10% {
+    transform: translate(-3%, -7%);
+  }
+
+  20% {
+    transform: translate(5%, 3%);
+  }
+
+  30% {
+    transform: translate(-2%, 8%);
+  }
+
+  40% {
+    transform: translate(7%, -4%);
+  }
+
+  50% {
+    transform: translate(-5%, 6%);
+  }
+
+  60% {
+    transform: translate(3%, -9%);
+  }
+
+  70% {
+    transform: translate(-8%, 2%);
+  }
+
+  80% {
+    transform: translate(6%, 7%);
+  }
+
+  90% {
+    transform: translate(-4%, -3%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
 }

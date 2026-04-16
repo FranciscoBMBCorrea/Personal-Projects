@@ -3,12 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-import {
-  contactLinks,
-  type Locale,
-  type PortfolioCopy,
-  type PortfolioProject,
-} from '@/data/portfolio'
+import type { Locale, PortfolioCopy, PortfolioProject } from '@/data/portfolio'
 
 type Props = {
   locale: Locale
@@ -17,240 +12,172 @@ type Props = {
 }
 
 export function ProjectPage({ locale, copy, project }: Props) {
-  const alternateLocale = locale === 'pt' ? 'en' : 'pt'
   const labels =
     locale === 'pt'
       ? {
-          back: 'Voltar ao portfolio',
+          back: 'Fechar projeto',
           summary: 'Resumo',
           challenge: 'Desafio',
           solution: 'Solução',
           deliverables: 'Entregáveis',
-          contact: 'Contacto',
+          area: 'Área',
+          client: 'Cliente',
           year: 'Ano',
-          highlights: 'Destaques',
-          deliverablesTitle: 'Páginas preparadas para receber imagens, plantas e detalhes reais.',
-          placeholder: 'Placeholder visual principal',
-          placeholderText: 'Espaço reservado para a imagem principal do projeto.',
+          location: 'Local',
+          result: 'Resultado',
+          images: 'Sequência visual',
+          galleryNote: 'Página em formato editorial, preparada para receber fotografias, renders e pranchas reais.',
         }
       : {
-          back: 'Back to portfolio',
+          back: 'Close project',
           summary: 'Overview',
           challenge: 'Challenge',
           solution: 'Solution',
           deliverables: 'Deliverables',
-          contact: 'Contact',
+          area: 'Area',
+          client: 'Client',
           year: 'Year',
-          highlights: 'Highlights',
-          deliverablesTitle: 'Pages ready to receive real imagery, plans, and detailed visuals.',
-          placeholder: 'Main visual placeholder',
-          placeholderText: 'Reserved space for the main project image.',
+          location: 'Location',
+          result: 'Result',
+          images: 'Visual sequence',
+          galleryNote: 'Editorial project page ready to receive real photography, renders, and presentation boards.',
         }
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden px-4 py-4 sm:px-6 lg:px-10">
       <div className="pointer-events-none absolute inset-0">
-        <div className={`absolute inset-x-0 top-0 h-[32rem] bg-gradient-to-br ${project.accent} opacity-90`} />
-        <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.62),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.1),transparent)]" />
+        <div className="absolute inset-0 bg-[rgba(31,24,11,0.16)]" />
+        <div className="absolute left-[-8rem] top-10 h-80 w-80 rounded-full bg-white/28 blur-3xl" />
+        <div className="absolute right-[-6rem] top-24 h-[28rem] w-[28rem] rounded-full bg-[#f7efb8]/30 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pb-20 pt-8 sm:px-8 lg:px-12">
-        <motion.header
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
-        >
-          <div className="space-y-2">
-            <p className="text-sm uppercase tracking-[0.35em] text-stone-600">{copy.role}</p>
-            <Link
-              href={`/${locale}`}
-              className="inline-block text-3xl font-semibold tracking-[-0.06em] text-stone-950 transition duration-300 hover:translate-x-1 sm:text-5xl"
-            >
-              {copy.name}
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href={`/${locale}`}
-              className="rounded-full border border-stone-300 bg-white/80 px-4 py-2 text-sm font-medium text-stone-800 transition hover:border-stone-900"
-            >
-              {labels.back}
-            </Link>
-            <Link
-              href={`/${alternateLocale}/projects/${project.slug}`}
-              className="rounded-full border border-stone-300 bg-white/80 px-4 py-2 text-sm font-medium uppercase tracking-[0.2em] text-stone-700 transition hover:border-stone-900 hover:text-stone-900"
-            >
-              {copy.switchLanguageLabel}
-            </Link>
-          </div>
-        </motion.header>
-
-        <section className="grid gap-10 border-b border-stone-300/70 pb-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.7fr)]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+      <motion.div
+        initial={{ opacity: 0, y: 26, scale: 0.985 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="relative mx-auto max-w-[92rem] rounded-[2rem] border border-stone-900/12 bg-[rgba(249,244,220,0.82)] shadow-[0_30px_120px_-60px_rgba(38,27,11,0.52)] backdrop-blur-2xl"
+      >
+        <div className="sticky top-4 z-30 flex items-center justify-between gap-4 border-b border-stone-900/10 bg-[rgba(249,244,220,0.72)] px-5 py-4 backdrop-blur-xl sm:px-7">
+          <Link
+            href={`/${locale}#projects`}
+            className="rounded-full border border-stone-900/12 bg-white/55 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-stone-700 transition hover:border-stone-900/35 hover:text-stone-950"
           >
-            <p className="mb-6 text-[0.78rem] uppercase tracking-[0.34em] text-stone-600">
-              {project.category} · {project.location}
-            </p>
-            <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.08em] text-stone-950 sm:text-7xl lg:text-[6rem] lg:leading-[0.92]">
-              {project.title}
-            </h1>
-            <p className="mt-8 max-w-2xl text-base leading-8 text-stone-700 sm:text-lg">
-              {project.summary}
-            </p>
-          </motion.div>
+            {labels.back}
+          </Link>
 
-          <motion.aside
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
-            className="rounded-[2rem] border border-stone-200 bg-white/80 p-6 backdrop-blur"
+          <Link
+            href={`/${locale === 'pt' ? 'en' : 'pt'}/projects/${project.slug}`}
+            className="rounded-full border border-stone-900/12 bg-white/55 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-stone-700 transition hover:border-stone-900/35 hover:text-stone-950"
           >
-            <div className="space-y-4">
-              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-500">{labels.year}</p>
-                <p className="mt-2 text-lg text-stone-900">{project.year}</p>
-              </div>
-              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-4">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-500">{labels.highlights}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-stone-200 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-stone-500"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.aside>
-        </section>
+            {copy.switchLanguageLabel}
+          </Link>
+        </div>
 
-        <section className="grid gap-6 border-b border-stone-300/70 py-16 lg:grid-cols-3">
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, ease: 'easeOut' }}
-            className="rounded-[1.75rem] border border-stone-200 bg-white/75 p-6"
-          >
-            <p className="text-[0.72rem] uppercase tracking-[0.3em] text-stone-500">{labels.summary}</p>
-            <p className="mt-5 text-sm leading-7 text-stone-600">{project.intro}</p>
-          </motion.article>
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
-            className="rounded-[1.75rem] border border-stone-200 bg-white/75 p-6"
-          >
-            <p className="text-[0.72rem] uppercase tracking-[0.3em] text-stone-500">{labels.challenge}</p>
-            <p className="mt-5 text-sm leading-7 text-stone-600">{project.challenge}</p>
-          </motion.article>
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.55, ease: 'easeOut', delay: 0.1 }}
-            className="rounded-[1.75rem] border border-stone-200 bg-white/75 p-6"
-          >
-            <p className="text-[0.72rem] uppercase tracking-[0.3em] text-stone-500">{labels.solution}</p>
-            <p className="mt-5 text-sm leading-7 text-stone-600">{project.solution}</p>
-          </motion.article>
-        </section>
-
-        <section className="border-b border-stone-300/70 py-16">
-          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-[0.76rem] uppercase tracking-[0.3em] text-stone-500">
-                {labels.deliverables}
+        <div className="px-5 pb-10 pt-8 sm:px-7 sm:pb-14">
+          <section className="grid gap-8 border-b border-stone-900/10 pb-10 lg:grid-cols-[11rem_minmax(0,1fr)_minmax(17rem,21rem)]">
+            <div className="space-y-2">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
+                {project.category}
               </p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.06em] text-stone-950 sm:text-5xl">
-                {labels.deliverablesTitle}
-              </h2>
+              <p className="text-sm leading-7 text-stone-700">{project.year}</p>
+              <p className="text-sm leading-7 text-stone-700">{project.location}</p>
             </div>
-          </div>
 
-          <div className="grid gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55, ease: 'easeOut' }}
-              className={`relative min-h-[22rem] overflow-hidden rounded-[2rem] bg-gradient-to-br ${project.accent} p-6`}
-            >
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.6),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.32))]" />
-              <div className="relative flex h-full flex-col justify-between">
-                <span className="w-fit rounded-full border border-stone-300/60 bg-white/60 px-3 py-1 text-[0.65rem] uppercase tracking-[0.22em] text-stone-600">
-                  {labels.placeholder}
-                </span>
-                <div>
-                  <p className="max-w-md text-sm leading-7 text-stone-700">
-                    {labels.placeholderText}
-                  </p>
+            <div className="space-y-6">
+              <h1 className="text-[3rem] leading-[0.9] tracking-[-0.09em] text-stone-950 sm:text-[4.8rem] lg:text-[7rem]">
+                {project.title}
+              </h1>
+              <p className="max-w-3xl text-lg leading-8 text-stone-800">{project.summary}</p>
+            </div>
+
+            <div className="space-y-4 border-l border-stone-900/10 pl-0 lg:pl-8">
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.area}</p>
+                <p className="mt-2 text-base text-stone-900">{project.area}</p>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.client}</p>
+                <p className="mt-2 text-base text-stone-900">{project.client}</p>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.location}</p>
+                <p className="mt-2 text-base text-stone-900">{project.location}</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid gap-8 border-b border-stone-900/10 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
+            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
+              {labels.images}
+            </p>
+
+            <div className="space-y-6">
+              <div className={`min-h-[30rem] bg-gradient-to-br ${project.accent}`} />
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className={`min-h-[22rem] bg-gradient-to-br ${project.accent}`} />
+                <div className="grid gap-6">
+                  <div className={`min-h-[10rem] bg-gradient-to-br ${project.accent}`} />
+                  <div className={`min-h-[10rem] bg-gradient-to-br ${project.accent}`} />
                 </div>
               </div>
-            </motion.div>
+              <p className="max-w-2xl font-mono text-[0.72rem] uppercase tracking-[0.22em] text-stone-600">
+                {labels.galleryNote}
+              </p>
+            </div>
+          </section>
 
-            <div className="grid gap-5">
+          <section className="grid gap-8 border-b border-stone-900/10 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
+            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
+              {labels.summary}
+            </p>
+
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,0.7fr)]">
+              <div className="space-y-6">
+                <p className="text-base leading-8 text-stone-800">{project.intro}</p>
+                <p className="text-base leading-8 text-stone-700">{project.result}</p>
+              </div>
+
+              <div className="space-y-6 border-l border-stone-900/10 pl-0 lg:pl-8">
+                <div>
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
+                    {labels.challenge}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.challenge}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
+                    {labels.solution}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.solution}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
+                    {labels.result}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.impact}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="grid gap-8 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
+            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
+              {labels.deliverables}
+            </p>
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
               {project.deliverables.map((item, index) => (
-                <motion.div
-                  key={item}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.05 }}
-                  className="rounded-[1.5rem] border border-stone-200 bg-white/75 p-5"
-                >
-                  <p className="text-[0.72rem] uppercase tracking-[0.26em] text-stone-500">
+                <div key={item} className="border-t border-stone-900/12 pt-4">
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
                     0{index + 1}
                   </p>
-                  <p className="mt-4 text-sm leading-7 text-stone-700">{item}</p>
-                </motion.div>
+                  <p className="mt-4 text-base leading-7 text-stone-800">{item}</p>
+                </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section id="contact" className="py-16">
-          <div className="rounded-[2rem] border border-stone-200 bg-white/80 p-8 sm:p-10">
-            <p className="text-[0.76rem] uppercase tracking-[0.3em] text-stone-500">{labels.contact}</p>
-            <div className="mt-5 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.06em] text-stone-950 sm:text-5xl">
-                  {copy.contact.title}
-                </h2>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-stone-600">
-                  {copy.contact.description}
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {contactLinks.map((contact, index) => (
-                  <a
-                    key={contact.label}
-                    className={
-                      index === 0
-                        ? 'rounded-full bg-stone-950 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:-translate-y-0.5 hover:bg-stone-800'
-                        : 'rounded-full border border-stone-300 bg-white px-6 py-3 text-sm font-medium text-stone-800 transition duration-300 hover:-translate-y-0.5 hover:border-stone-900'
-                    }
-                    href={contact.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {contact.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </motion.div>
     </main>
   )
 }

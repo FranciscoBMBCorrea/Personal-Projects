@@ -1,0 +1,303 @@
+import type { Locale, PortfolioCopy } from '@/data/portfolio-types'
+
+export const contactLinks = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/francisco-corr%C3%AAa/',
+  },
+  {
+    label: 'WhatsApp',
+    href: 'https://wa.me/5548933002821',
+  },
+  {
+    label: 'Mail',
+    href: 'mailto:franciscobmbc@gmail.com',
+  },
+] as const
+
+export const profileContent: Record<Locale, PortfolioCopy> = {
+  pt: {
+    languageLabel: 'PT',
+    switchLanguageLabel: 'EN',
+    localeLabel: 'pt_PT',
+    siteTitle: 'Francisco Beça Múrias | Portfolio',
+    siteDescription:
+      'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, desenho 2D e visualização 3D.',
+    ogTitle: 'Francisco Beça Múrias | Interior Design Portfolio',
+    ogDescription:
+      'Portfolio bilingue de design de interiores, desenho 2D e visualização 3D com linguagem minimalista e elegante.',
+    name: 'Francisco Beça Múrias',
+    role: 'Design de interiores · 2D · 3D',
+    nav: {
+      home: 'Início',
+      about: 'Sobre',
+      projects: 'Projetos',
+      services: 'Serviços',
+      process: 'Processo',
+      contact: 'Contacto',
+    },
+    hero: {
+      eyebrow: 'Interior designer · 2D drafting · 3D visualization',
+      title: 'Projetos espaciais apresentados com clareza, critério e direção visual.',
+      description:
+        'Designer de interiores com foco em leitura espacial, desenho 2D e visualização 3D. O portfolio foi organizado para mostrar cada projeto de forma clara: contexto, decisão e resultado.',
+      primaryCta: 'Ver projetos',
+      secondaryCta: 'Contactar',
+      note: 'Disponível para projetos residenciais, cultura, retail e colaboração com estúdios.',
+    },
+    introCard: {
+      title: 'Como ler',
+      rows: [
+        ['Contexto', 'Cada projeto começa por localização, escala e tipo de programa'],
+        ['Processo', 'As páginas mostram desafio, resposta e material apresentado'],
+        ['Leitura', 'A seleção privilegia clareza espacial, síntese e atmosfera'],
+      ],
+    },
+    about: {
+      label: 'Prática',
+      title: 'Um portfolio pensado para ser lido com a mesma clareza com que um projeto deve ser apresentado.',
+      paragraphs: [
+        'O foco está em organizar informação espacial de forma legível: o que o projeto é, o que procura resolver e como essa resposta ganha forma.',
+        'Entre interiores, desenho técnico e visualização, o objetivo é reduzir ruído e tornar cada decisão mais fácil de compreender.',
+      ],
+    },
+    projects: {
+      label: 'Projetos',
+      title: 'Quatro projetos apresentados como estudos espaciais, cada um com contexto, questão central e resposta.',
+      description:
+        'Todos seguem a mesma lógica de leitura para facilitar comparação: contexto, síntese, desenvolvimento, material apresentado e sequência visual.',
+      cta: 'Abrir projeto',
+    },
+    services: {
+      label: 'O que faço',
+      title: 'Três áreas de trabalho, explicadas de forma direta.',
+      description:
+        'A estrutura é simples: conceber o espaço, desenhá-lo com precisão e comunicá-lo com imagens claras.',
+      items: [
+        {
+          title: 'Interior design',
+          text: 'Organização do espaço, linguagem do projeto e construção de atmosfera para contextos residenciais ou comerciais.',
+        },
+        {
+          title: 'Desenho 2D',
+          text: 'Plantas, layouts e documentação visual pensados para comunicar o projeto sem excesso nem ambiguidade.',
+        },
+        {
+          title: 'Visualização 3D',
+          text: 'Renders, perspetivas e imagens de apresentação usadas para dar espessura visual às decisões espaciais.',
+        },
+      ],
+    },
+    process: {
+      label: 'Método',
+      title: 'Uma sequência curta para tornar cada projeto fácil de entender.',
+      description:
+        'A estrutura do trabalho procura manter foco, reduzir ruído e apresentar cada etapa com intenção.',
+      steps: [
+        {
+          number: '01',
+          title: 'Ler o problema',
+          text: 'Identificar programa, uso, atmosfera pretendida e o que precisa realmente de ser resolvido.',
+        },
+        {
+          number: '02',
+          title: 'Estruturar a resposta',
+          text: 'Organizar circulação, escala e linguagem espacial até a proposta ficar clara e coerente.',
+        },
+        {
+          number: '03',
+          title: 'Comunicar o projeto',
+          text: 'Produzir desenhos, imagens e material de apresentação que expliquem a proposta sem excesso.',
+        },
+      ],
+    },
+    contact: {
+      label: 'Contacto',
+      title: 'Disponível para projetos de interiores, desenho e visualização.',
+      description:
+        'Para novos projetos, apoio a estúdios ou desenvolvimento de apresentações espaciais mais claras e consistentes.',
+      primaryCta: 'Pedir proposta',
+      secondaryCta: 'Falar no WhatsApp',
+    },
+    aboutPage: {
+      label: 'Sobre',
+      title: 'Uma prática que junta clareza espacial, detalhe técnico e sensibilidade visual.',
+      intro:
+        'Francisco Beça Múrias trabalha entre design de interiores, desenho 2D e visualização 3D, com interesse particular por espaços que conciliam contenção formal e experiência sensorial.',
+      body: [
+        'O portfolio foi pensado para comunicar não apenas o resultado final, mas também o raciocínio por trás de cada ambiente: leitura do espaço, fluxo, materialidade e composição.',
+        'A apresentação privilegia um tom editorial, mais próximo de um caderno de estúdio do que de um site promocional genérico, ajudando a posicionar o trabalho de forma mais autoral.',
+      ],
+      stats: [
+        ['Base', 'Portugal / Brasil'],
+        ['Foco', 'Residencial, cultural, retail'],
+        ['Ferramentas', 'Layout 2D, renders, material boards'],
+      ],
+    },
+    servicesPage: {
+      label: 'Serviços',
+      title: 'Serviços organizados para que o papel de cada entrega seja imediato.',
+      intro:
+        'Tal como nas referências de UX mais claras, cada secção deve dizer rapidamente o que é, para que serve e quando faz sentido.',
+      sections: [
+        {
+          title: 'Conceito e direção',
+          text: 'Define a direção geral do espaço, as referências-chave e a intenção visual que vai orientar o resto do projeto.',
+        },
+        {
+          title: 'Desenho e organização',
+          text: 'Transforma essa direção em plantas, layouts e estudos legíveis, com foco em circulação e proporção.',
+        },
+        {
+          title: 'Visualização e apresentação',
+          text: 'Traduz o projeto em imagens, cenas e material de apresentação que ajudam outros a perceber rapidamente a proposta.',
+        },
+      ],
+    },
+    footer: 'Portfolio de design de interiores e visualização 2D/3D.',
+  },
+  en: {
+    languageLabel: 'EN',
+    switchLanguageLabel: 'PT',
+    localeLabel: 'en_US',
+    siteTitle: 'Francisco Beça Múrias | Portfolio',
+    siteDescription:
+      'Personal portfolio for Francisco Beça Múrias focused on interior design, 2D drafting, and 3D visualization.',
+    ogTitle: 'Francisco Beça Múrias | Interior Design Portfolio',
+    ogDescription:
+      'Bilingual portfolio focused on interior design, 2D drafting, and 3D visualization with a refined minimal visual language.',
+    name: 'Francisco Beça Múrias',
+    role: 'Interior design · 2D · 3D',
+    nav: {
+      home: 'Home',
+      about: 'About',
+      projects: 'Projects',
+      services: 'Services',
+      process: 'Process',
+      contact: 'Contact',
+    },
+    hero: {
+      eyebrow: 'Interior designer · 2D drafting · 3D visualization',
+      title: 'Spatial projects presented with clarity, judgment, and visual direction.',
+      description:
+        'Interior designer focused on spatial reading, 2D drafting, and 3D visualization. The portfolio is structured to make each project easy to read: context, decision, and outcome.',
+      primaryCta: 'View projects',
+      secondaryCta: 'Get in touch',
+      note: 'Available for residential, cultural, retail, and studio collaboration work.',
+    },
+    introCard: {
+      title: 'How to read',
+      rows: [
+        ['Context', 'Each project starts with location, scale, and program'],
+        ['Process', 'Pages show the challenge, the response, and the material included'],
+        ['Reading', 'The selection prioritizes clarity, spatial intent, and atmosphere'],
+      ],
+    },
+    about: {
+      label: 'Practice',
+      title: 'A portfolio built to be read with the same clarity a project should be presented with.',
+      paragraphs: [
+        'The focus is on organizing spatial information so it stays legible: what the project is, what it is trying to resolve, and how that response takes shape.',
+        'Across interiors, technical drafting, and visualization, the aim is to reduce noise and make each decision easier to understand.',
+      ],
+    },
+    projects: {
+      label: 'Projects',
+      title: 'Four projects presented as spatial studies, each with context, a core question, and a response.',
+      description:
+        'Each page follows the same reading logic to make comparison easier: context, summary, development, included material, and visual sequence.',
+      cta: 'Open project',
+    },
+    services: {
+      label: 'What I do',
+      title: 'Three areas of work, explained directly.',
+      description:
+        'The structure is simple: shape the space, draw it clearly, and communicate it with strong images.',
+      items: [
+        {
+          title: 'Interior design',
+          text: 'Spatial organization, project language, and atmosphere building for residential or commercial settings.',
+        },
+        {
+          title: '2D drafting',
+          text: 'Plans, layouts, and visual documentation designed to communicate the project without ambiguity.',
+        },
+        {
+          title: '3D visualization',
+          text: 'Renders, perspectives, and presentation imagery that give visual weight to spatial decisions.',
+        },
+      ],
+    },
+    process: {
+      label: 'Method',
+      title: 'A short sequence that makes each project easier to understand.',
+      description:
+        'The working structure aims to keep focus, reduce noise, and present each stage with intention.',
+      steps: [
+        {
+          number: '01',
+          title: 'Read the problem',
+          text: 'Identify the program, use, intended atmosphere, and what truly needs to be resolved.',
+        },
+        {
+          number: '02',
+          title: 'Structure the response',
+          text: 'Organize circulation, scale, and spatial language until the proposal becomes clear and coherent.',
+        },
+        {
+          number: '03',
+          title: 'Communicate the project',
+          text: 'Produce drawings, imagery, and presentation material that explain the proposal without excess.',
+        },
+      ],
+    },
+    contact: {
+      label: 'Contact',
+      title: 'Available for interior projects, drafting, and visualization.',
+      description:
+        'For new commissions, studio support, or clearer and more consistent spatial presentations.',
+      primaryCta: 'Request proposal',
+      secondaryCta: 'Chat on WhatsApp',
+    },
+    aboutPage: {
+      label: 'About',
+      title: 'A practice shaped by spatial clarity, technical precision, and visual sensitivity.',
+      intro:
+        'Francisco Beça Múrias works between interior design, 2D drafting, and 3D visualization, with a particular interest in spaces that balance formal restraint and sensory experience.',
+      body: [
+        'The portfolio is designed to communicate not only final outcomes, but also the thinking behind each environment: spatial reading, flow, materiality, and composition.',
+        'The presentation leans toward an editorial tone, closer to a studio notebook than a generic promotional website, helping position the work in a more authored way.',
+      ],
+      stats: [
+        ['Base', 'Portugal / Brazil'],
+        ['Focus', 'Residential, cultural, retail'],
+        ['Tools', '2D layout, renders, material boards'],
+      ],
+    },
+    servicesPage: {
+      label: 'Services',
+      title: 'Services organized so the role of each deliverable is immediately clear.',
+      intro:
+        'Like the clearest UX references, each section should quickly explain what it is, what it does, and when it matters.',
+      sections: [
+        {
+          title: 'Concept and direction',
+          text: 'Defines the overall direction of the space, the key references, and the visual intention that guides the rest of the work.',
+        },
+        {
+          title: 'Drafting and organization',
+          text: 'Turns that direction into plans, layouts, and readable studies focused on circulation and proportion.',
+        },
+        {
+          title: 'Visualization and presentation',
+          text: 'Translates the project into images and presentation material that help others understand the proposal quickly.',
+        },
+      ],
+    },
+    footer: 'Interior design and 2D/3D visualization portfolio.',
+  },
+}
+
+export function getProfileCopy(locale: Locale) {
+  return profileContent[locale]
+}

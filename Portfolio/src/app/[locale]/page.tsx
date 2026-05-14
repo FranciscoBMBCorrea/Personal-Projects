@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
 
 import { PortfolioHome } from '@/components/portfolio-home'
+import { StructuredData } from '@/components/seo/structured-data'
+import { locales } from '@/data/portfolio'
+import { getPortfolioProjects, getPortfolioSiteCopy } from '@/lib/portfolio-content'
+import { resolveLocale, resolveOptionalLocale } from '@/lib/route-params'
 import {
-  getPortfolioCopy,
-  getProjects,
-  isLocale,
-  locales,
-  type Locale,
-} from '@/data/portfolio'
+  buildPageMetadata,
+  createBreadcrumbSchema,
+  createPersonSchema,
+  createProfessionalServiceSchema,
+  createWebsiteSchema,
+} from '@/lib/seo'
 
 type Props = {
   params: Promise<{
@@ -21,45 +24,44 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
+  const locale = await resolveOptionalLocale(params)
 
-  if (!isLocale(locale)) {
+  if (!locale) {
     return {}
   }
 
-  const copy = getPortfolioCopy(locale as Locale)
+  const copy = await getPortfolioSiteCopy(locale)
 
-  return {
+  return buildPageMetadata({
+    locale,
+    path: `/${locale}`,
     title: copy.siteTitle,
     description: copy.siteDescription,
-    openGraph: {
-      title: copy.ogTitle,
-      description: copy.ogDescription,
-      locale: copy.localeLabel,
-      type: 'website',
-    },
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        pt: '/pt',
-        en: '/en',
-      },
-    },
-  }
+    ogTitle: copy.ogTitle,
+    ogDescription: copy.ogDescription,
+    type: 'website',
+  })
 }
 
 export default async function LocaleHomePage({ params }: Props) {
-  const { locale } = await params
-
-  if (!isLocale(locale)) {
-    notFound()
-  }
+  const locale = await resolveLocale(params)
+  const copy = await getPortfolioSiteCopy(locale)
+  const projects = await getPortfolioProjects(locale)
+  const schemas = [
+    createWebsiteSchema(copy, locale),
+    createPersonSchema(copy),
+    createProfessionalServiceSchema(copy, locale),
+    createBreadcrumbSchema([{ name: copy.nav.home, path: `/${locale}` }]),
+  ]
 
   return (
-    <PortfolioHome
-      locale={locale as Locale}
-      copy={getPortfolioCopy(locale as Locale)}
-      projects={getProjects(locale as Locale)}
-    />
+    <>
+      <StructuredData data={schemas} />
+      <PortfolioHome
+        locale={locale}
+        copy={copy}
+        projects={projects}
+      />
+    </>
   )
 }

@@ -1,183 +1,258 @@
-'use client'
+import Image from 'next/image'
 
-import Link from 'next/link'
-import { motion } from 'framer-motion'
+import type { Locale, PortfolioCopy } from '@/data/portfolio'
+import type { CMSPortfolioProject } from '@/lib/portfolio-content'
 
-import type { Locale, PortfolioCopy, PortfolioProject } from '@/data/portfolio'
+import { PageShell } from '@/components/layout/PageShell'
+import { Button } from '@/components/ui/Button'
+import { Tag } from '@/components/ui/Tag'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { Heading } from '@/components/typography/Heading'
 
 type Props = {
   locale: Locale
   copy: PortfolioCopy
-  project: PortfolioProject
+  project: CMSPortfolioProject
 }
 
 export function ProjectPage({ locale, copy, project }: Props) {
+  const navItems = [
+    { href: `/${locale}`, label: copy.nav.home },
+    { href: `/${locale}#projects`, label: copy.nav.projects },
+    { href: `/${locale}/about`, label: copy.nav.about },
+    { href: `/${locale}/services`, label: copy.nav.services },
+  ]
+
   const labels =
     locale === 'pt'
       ? {
-          back: 'Fechar projeto',
-          summary: 'Resumo',
-          challenge: 'Desafio',
-          solution: 'Solução',
-          deliverables: 'Entregáveis',
-          area: 'Área',
-          client: 'Cliente',
-          year: 'Ano',
-          location: 'Local',
-          result: 'Resultado',
-          images: 'Sequência visual',
-          galleryNote: 'Página em formato editorial, preparada para receber fotografias, renders e pranchas reais.',
+          overview: 'Leitura do projeto',
+          challenge: 'Questão central',
+          solution: 'Resposta',
+          result: 'O que demonstra',
+          services: 'Serviços',
+          tools: 'Ferramentas',
+          deliverables: 'Conteúdo apresentado',
+          sequence: 'Sequência visual',
+          back: 'Voltar aos projetos',
         }
       : {
-          back: 'Close project',
-          summary: 'Overview',
-          challenge: 'Challenge',
-          solution: 'Solution',
-          deliverables: 'Deliverables',
-          area: 'Area',
-          client: 'Client',
-          year: 'Year',
-          location: 'Location',
-          result: 'Result',
-          images: 'Visual sequence',
-          galleryNote: 'Editorial project page ready to receive real photography, renders, and presentation boards.',
+          overview: 'Project reading',
+          challenge: 'Core question',
+          solution: 'Response',
+          result: 'What it demonstrates',
+          services: 'Services',
+          tools: 'Tools',
+          deliverables: 'Included material',
+          sequence: 'Visual sequence',
+          back: 'Back to projects',
         }
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-4 sm:px-6 lg:px-10">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[rgba(31,24,11,0.16)]" />
-        <div className="absolute left-[-8rem] top-10 h-80 w-80 rounded-full bg-white/28 blur-3xl" />
-        <div className="absolute right-[-6rem] top-24 h-[28rem] w-[28rem] rounded-full bg-[#f7efb8]/30 blur-3xl" />
-      </div>
+    <PageShell
+      copy={copy}
+      locale={locale}
+      navItems={navItems}
+    >
+      <article>
+        <AnimatedSection className="border-b border-black/10 pb-12 sm:pb-16">
+          <div className="grid gap-10 lg:grid-cols-[10rem_minmax(0,1fr)_minmax(16rem,20rem)]">
+          <div className="space-y-2">
+            <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+              {project.category}
+            </p>
+            <p className="text-sm leading-[1.6] text-black/76">{project.year}</p>
+            <p className="text-sm leading-[1.6] text-black/76">{project.location}</p>
+          </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 26, scale: 0.985 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="relative mx-auto max-w-[92rem] rounded-[2rem] border border-stone-900/12 bg-[rgba(249,244,220,0.82)] shadow-[0_30px_120px_-60px_rgba(38,27,11,0.52)] backdrop-blur-2xl"
-      >
-        <div className="sticky top-4 z-30 flex items-center justify-between gap-4 border-b border-stone-900/10 bg-[rgba(249,244,220,0.72)] px-5 py-4 backdrop-blur-xl sm:px-7">
-          <Link
-            href={`/${locale}#projects`}
-            className="rounded-full border border-stone-900/12 bg-white/55 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-stone-700 transition hover:border-stone-900/35 hover:text-stone-950"
-          >
-            {labels.back}
-          </Link>
+          <div className="space-y-6">
+            <Heading
+              as="h1"
+              size="section"
+            >
+              {project.title}
+            </Heading>
+            <p className="max-w-[40rem] text-lg leading-[1.72] text-black/82">
+              {project.summary}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.highlights.map((highlight) => (
+                <Tag key={highlight}>{highlight}</Tag>
+              ))}
+            </div>
+          </div>
 
-          <Link
-            href={`/${locale === 'pt' ? 'en' : 'pt'}/projects/${project.slug}`}
-            className="rounded-full border border-stone-900/12 bg-white/55 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-stone-700 transition hover:border-stone-900/35 hover:text-stone-950"
-          >
-            {copy.switchLanguageLabel}
-          </Link>
+          <div className="space-y-4 border-l border-black/10 pl-0 lg:pl-8">
+            <div>
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                {locale === 'pt' ? 'Área' : 'Area'}
+              </p>
+              <p className="mt-2 text-base leading-[1.6] text-black/84">{project.area}</p>
+            </div>
+            <div>
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                {locale === 'pt' ? 'Cliente' : 'Client'}
+              </p>
+              <p className="mt-2 text-base leading-[1.6] text-black/84">{project.client}</p>
+            </div>
+            {project.status ? (
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {locale === 'pt' ? 'Estado' : 'Status'}
+                </p>
+                <p className="mt-2 text-base leading-[1.6] text-black/84">{project.status}</p>
+              </div>
+            ) : null}
+          </div>
         </div>
+      </AnimatedSection>
 
-        <div className="px-5 pb-10 pt-8 sm:px-7 sm:pb-14">
-          <section className="grid gap-8 border-b border-stone-900/10 pb-10 lg:grid-cols-[11rem_minmax(0,1fr)_minmax(17rem,21rem)]">
-            <div className="space-y-2">
-              <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
-                {project.category}
-              </p>
-              <p className="text-sm leading-7 text-stone-700">{project.year}</p>
-              <p className="text-sm leading-7 text-stone-700">{project.location}</p>
-            </div>
+      <AnimatedSection className="border-b border-black/10 py-12 sm:py-16">
+        <div className="grid gap-10 lg:grid-cols-[10rem_minmax(0,1fr)]">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-black/56">
+            {labels.sequence}
+          </p>
 
-            <div className="space-y-6">
-              <h1 className="text-[3rem] leading-[0.9] tracking-[-0.09em] text-stone-950 sm:text-[4.8rem] lg:text-[7rem]">
-                {project.title}
-              </h1>
-              <p className="max-w-3xl text-lg leading-8 text-stone-800">{project.summary}</p>
-            </div>
-
-            <div className="space-y-4 border-l border-stone-900/10 pl-0 lg:pl-8">
-              <div>
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.area}</p>
-                <p className="mt-2 text-base text-stone-900">{project.area}</p>
-              </div>
-              <div>
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.client}</p>
-                <p className="mt-2 text-base text-stone-900">{project.client}</p>
-              </div>
-              <div>
-                <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">{labels.location}</p>
-                <p className="mt-2 text-base text-stone-900">{project.location}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="grid gap-8 border-b border-stone-900/10 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
-              {labels.images}
-            </p>
-
-            <div className="space-y-6">
-              <div className={`min-h-[30rem] bg-gradient-to-br ${project.accent}`} />
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className={`min-h-[22rem] bg-gradient-to-br ${project.accent}`} />
-                <div className="grid gap-6">
-                  <div className={`min-h-[10rem] bg-gradient-to-br ${project.accent}`} />
-                  <div className={`min-h-[10rem] bg-gradient-to-br ${project.accent}`} />
+          <div className="space-y-6">
+            {project.images?.length ? (
+              <>
+                <div className="overflow-hidden rounded-[1.7rem] bg-black/4">
+                  <Image
+                    alt={project.images[0].alt}
+                    className="aspect-[16/10] w-full object-cover"
+                    height={1200}
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 72vw, 960px"
+                    src={project.images[0].url}
+                    width={1800}
+                  />
                 </div>
-              </div>
-              <p className="max-w-2xl font-mono text-[0.72rem] uppercase tracking-[0.22em] text-stone-600">
-                {labels.galleryNote}
-              </p>
-            </div>
-          </section>
-
-          <section className="grid gap-8 border-b border-stone-900/10 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
-              {labels.summary}
-            </p>
-
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,0.7fr)]">
-              <div className="space-y-6">
-                <p className="text-base leading-8 text-stone-800">{project.intro}</p>
-                <p className="text-base leading-8 text-stone-700">{project.result}</p>
-              </div>
-
-              <div className="space-y-6 border-l border-stone-900/10 pl-0 lg:pl-8">
-                <div>
-                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
-                    {labels.challenge}
+                {project.images[0].caption ? (
+                  <p className="max-w-[34rem] text-sm leading-[1.68] text-black/80">
+                    {project.images[0].caption}
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.challenge}</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
-                    {labels.solution}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.solution}</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
-                    {labels.result}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-stone-700">{project.impact}</p>
+                ) : null}
+                {project.images.length > 1 ? (
+                  <div className="grid gap-5 md:grid-cols-2">
+                    {project.images.slice(1, 5).map((image) => (
+                      <figure
+                        key={image.url}
+                        className="space-y-3"
+                      >
+                        <div className="overflow-hidden rounded-[1.4rem] bg-black/4">
+                          <Image
+                            alt={image.alt}
+                            className="aspect-[4/5] w-full object-cover"
+                            height={1100}
+                            sizes="(max-width: 768px) 100vw, 44vw"
+                            src={image.url}
+                            width={880}
+                          />
+                        </div>
+                        {image.caption ? (
+                          <figcaption className="text-sm leading-[1.68] text-black/80">
+                            {image.caption}
+                          </figcaption>
+                        ) : null}
+                      </figure>
+                    ))}
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <div className={`aspect-[16/10] rounded-[1.7rem] bg-gradient-to-br ${project.accent}`} />
+            )}
+          </div>
+        </div>
+        </AnimatedSection>
+
+        <AnimatedSection className="border-b border-black/10 py-12 sm:py-16">
+          <div className="grid gap-10 lg:grid-cols-[10rem_minmax(0,1fr)]">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-black/56">
+            {labels.overview}
+          </p>
+
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,0.8fr)]">
+            <div className="space-y-5">
+              <p className="text-base leading-[1.78] text-black/82">{project.intro}</p>
+              <p className="text-base leading-[1.78] text-black/82">{project.result}</p>
+            </div>
+
+            <div className="space-y-6 border-l border-black/10 pl-0 lg:pl-8">
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {labels.services}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.services.map((service) => (
+                    <Tag key={service}>{service}</Tag>
+                  ))}
                 </div>
               </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {labels.tools}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.tools.map((tool) => (
+                    <Tag key={tool}>{tool}</Tag>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {labels.challenge}
+                </p>
+                <p className="mt-3 text-sm leading-[1.68] text-black/80">{project.challenge}</p>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {labels.solution}
+                </p>
+                <p className="mt-3 text-sm leading-[1.68] text-black/80">{project.solution}</p>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                  {labels.result}
+                </p>
+                <p className="mt-3 text-sm leading-[1.68] text-black/80">{project.impact}</p>
+              </div>
             </div>
-          </section>
+          </div>
+        </div>
+        </AnimatedSection>
 
-          <section className="grid gap-8 py-10 lg:grid-cols-[11rem_minmax(0,1fr)]">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.3em] text-stone-500">
-              {labels.deliverables}
-            </p>
+        <AnimatedSection className="py-12 sm:py-16">
+          <div className="grid gap-10 lg:grid-cols-[10rem_minmax(0,1fr)]">
+          <p className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-black/56">
+            {labels.deliverables}
+          </p>
 
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="space-y-8">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {project.deliverables.map((item, index) => (
-                <div key={item} className="border-t border-stone-900/12 pt-4">
-                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-stone-500">
+                <div
+                  key={item}
+                  className="border-t border-black/10 pt-4"
+                >
+                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
                     0{index + 1}
                   </p>
-                  <p className="mt-4 text-base leading-7 text-stone-800">{item}</p>
+                  <p className="mt-4 text-base leading-[1.64] text-black/84">{item}</p>
                 </div>
               ))}
             </div>
-          </section>
-        </div>
-      </motion.div>
-    </main>
+
+            <Button
+              href={`/${locale}#projects`}
+              variant="secondary"
+            >
+              {labels.back}
+            </Button>
+          </div>
+          </div>
+        </AnimatedSection>
+      </article>
+    </PageShell>
   )
 }

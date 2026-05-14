@@ -1,0 +1,318 @@
+{
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "format": "custom",
+  "json": {
+    "Main": {
+      "site_title": {
+        "type": "Text",
+        "config": {
+          "label": "Francisco Beça Múrias | Portfolio",
+          "placeholder": "Francisco Beça Múrias | Interior Design Portfolio"
+        }
+      },
+      "site_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Portfolio bilingue, desenho 2D e 3D",
+          "placeholder": "Portfolio bilingue de design de interiores, desenho 2D e 3D com linguagem minimalista e elegante.",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "og_title": {
+        "type": "Text",
+        "config": {
+          "label": "OG title"
+        }
+      },
+      "og_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "OG description",
+          "multi": "paragraph"
+        }
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Francisco Beça Múrias",
+          "placeholder": "Francisco Beça Múrias"
+        }
+      },
+      "role": {
+        "type": "Text",
+        "config": {
+          "label": "Design de interiores · 2D · 3D",
+          "placeholder": "Design de interiores · 2D · 3D"
+        }
+      },
+      "hero_eyebrow": {
+        "type": "Text",
+        "config": {
+          "label": "Interior designer · 2D · 3D",
+          "placeholder": "Interior designer · 2D drafting · 3D visualization"
+        }
+      },
+      "hero_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Designer de interiores e ambientes.",
+          "placeholder": "Designer de interiores com leitura espacial 2D e 3D construídas com precisão.",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "hero_note": {
+        "type": "StructuredText",
+        "config": {
+          "label": "projetos residenciais, hospitality.",
+          "placeholder": "Disponível para projetos residenciais, hospitality e colaboração criativa.",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "intro_rows": {
+        "type": "Group",
+        "config": {
+          "label": "Intro rows",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Foco",
+                "placeholder": ""
+              }
+            },
+            "value": {
+              "type": "Text",
+              "config": {
+                "label": "Interiores residenciais/comerciais",
+                "placeholder": "Interiores residenciais e comerciais"
+              }
+            }
+          }
+        }
+      },
+      "about_title": {
+        "type": "Text",
+        "config": {
+          "label": "About",
+          "placeholder": "Interiores, desenho técnico e visualização com uma linguagem contida e precisa."
+        }
+      },
+      "about_paragraphs": {
+        "type": "Group",
+        "config": {
+          "label": "About paragraphs",
+          "fields": {
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "multi": "paragraph"
+              }
+            },
+            "about_paragrafo1": {
+              "type": "Text",
+              "config": {
+                "label": "About Paragrafo1",
+                "placeholder": "Leitura cuidada do espaço, da proporção e da atmosfera que cada projeto precisa de transmitir."
+              }
+            }
+          }
+        }
+      },
+      "projects_title": {
+        "type": "Text",
+        "config": {
+          "label": "Projects title"
+        }
+      },
+      "projects_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Projects description",
+          "multi": "paragraph"
+        }
+      },
+      "services_title": {
+        "type": "Text",
+        "config": {
+          "label": "Services title"
+        }
+      },
+      "services_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Services description",
+          "multi": "paragraph"
+        }
+      },
+      "services_items": {
+        "type": "Group",
+        "config": {
+          "label": "Services items",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title"
+              }
+            },
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "multi": "paragraph"
+              }
+            }
+          }
+        }
+      },
+      "process_title": {
+        "type": "Text",
+        "config": {
+          "label": "Process title"
+        }
+      },
+      "process_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Process description",
+          "multi": "paragraph"
+        }
+      },
+      "process_steps": {
+        "type": "Group",
+        "config": {
+          "label": "Process steps",
+          "fields": {
+            "number": {
+              "type": "Text",
+              "config": {
+                "label": "Number"
+              }
+            },
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title"
+              }
+            },
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "multi": "paragraph"
+              }
+            }
+          }
+        }
+      },
+      "contact_title": {
+        "type": "Text",
+        "config": {
+          "label": "Contact title"
+        }
+      },
+      "contact_description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact description",
+          "multi": "paragraph"
+        }
+      },
+      "about_page_title": {
+        "type": "Text",
+        "config": {
+          "label": "About page title"
+        }
+      },
+      "about_page_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "About page intro",
+          "multi": "paragraph"
+        }
+      },
+      "about_page_body": {
+        "type": "Group",
+        "config": {
+          "label": "About page body",
+          "fields": {
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "multi": "paragraph"
+              }
+            }
+          }
+        }
+      },
+      "about_page_stats": {
+        "type": "Group",
+        "config": {
+          "label": "About page stats",
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label"
+              }
+            },
+            "value": {
+              "type": "Text",
+              "config": {
+                "label": "Value"
+              }
+            }
+          }
+        }
+      },
+      "services_page_title": {
+        "type": "Text",
+        "config": {
+          "label": "Services page title"
+        }
+      },
+      "services_page_intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Services page intro",
+          "multi": "paragraph"
+        }
+      },
+      "services_page_sections": {
+        "type": "Group",
+        "config": {
+          "label": "Services page sections",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title"
+              }
+            },
+            "text": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Text",
+                "multi": "paragraph"
+              }
+            }
+          }
+        }
+      },
+      "footer": {
+        "type": "Text",
+        "config": {
+          "label": "Footer"
+        }
+      }
+    }
+  }
+}

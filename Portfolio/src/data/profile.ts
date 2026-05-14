@@ -37,7 +37,7 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
       contact: 'Contacto',
     },
     hero: {
-      eyebrow: 'Interior designer · 2D drafting · 3D visualization',
+      eyebrow: 'Design de interiores · desenho 2D · visualização 3D',
       title: 'Projetos espaciais apresentados com clareza, critério e direção visual.',
       description:
         'Designer de interiores com foco em leitura espacial, desenho 2D e visualização 3D. O portfolio foi organizado para mostrar cada projeto de forma clara: contexto, decisão e resultado.',

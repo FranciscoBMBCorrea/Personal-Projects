@@ -1,0 +1,184 @@
+{
+  "id": "project",
+  "label": "Project",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Casa Amarela"
+        }
+      },
+      "year": {
+        "type": "Number",
+        "config": {
+          "label": "Year",
+          "placeholder": "2026"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": "Laguna, Cabeçuda, SC, Brasil"
+        }
+      },
+      "category": {
+        "type": "Text",
+        "config": {
+          "label": "Category",
+          "placeholder": "Residential"
+        }
+      },
+      "area": {
+        "type": "Text",
+        "config": {
+          "label": "Area",
+          "placeholder": "1400 m²"
+        }
+      },
+      "client": {
+        "type": "Text",
+        "config": {
+          "label": "Client",
+          "placeholder": "Projeto próprio"
+        }
+      },
+      "status": {
+        "type": "Text",
+        "config": {
+          "label": "Status",
+          "placeholder": "Em fase de projeto"
+        }
+      },
+      "accent_theme": {
+        "type": "Select",
+        "config": {
+          "label": "Accent theme",
+          "options": [
+            "stone",
+            "ivory",
+            "sand",
+            "amber"
+          ],
+          "default_value": "stone"
+        }
+      },
+      "summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Summary",
+          "multi": "paragraph"
+        }
+      },
+      "impact": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Impact",
+          "multi": "paragraph"
+        }
+      },
+      "intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Intro",
+          "multi": "paragraph"
+        }
+      },
+      "challenge": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Challenge",
+          "multi": "paragraph"
+        }
+      },
+      "solution": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Solution",
+          "multi": "paragraph"
+        }
+      },
+      "result": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Result",
+          "multi": "paragraph"
+        }
+      },
+      "before_after": {
+        "type": "Group",
+        "config": {
+          "label": "Before / after",
+          "fields": {
+            "before": {
+              "type": "Text",
+              "config": {
+                "label": "Before"
+              }
+            },
+            "after": {
+              "type": "Text",
+              "config": {
+                "label": "After"
+              }
+            }
+          }
+        }
+      },
+      "deliverables": {
+        "type": "Group",
+        "config": {
+          "label": "Deliverables",
+          "fields": {
+            "item": {
+              "type": "Text",
+              "config": {
+                "label": "Item"
+              }
+            }
+          }
+        }
+      },
+      "highlights": {
+        "type": "Group",
+        "config": {
+          "label": "Highlights",
+          "fields": {
+            "item": {
+              "type": "Text",
+              "config": {
+                "label": "Item"
+              }
+            }
+          }
+        }
+      },
+      "gallery": {
+        "type": "Group",
+        "config": {
+          "label": "Gallery",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "caption": {
+              "type": "Text",
+              "config": {
+                "label": "Caption"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

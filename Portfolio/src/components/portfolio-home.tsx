@@ -52,44 +52,46 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
 
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,0,0,0.045),transparent_28%),radial-gradient(circle_at_82%_14%,rgba(0,0,0,0.04),transparent_24%)]" />
 
-      <div className="relative">
-        <Header
-          alternateLocaleLabel={copy.switchLanguageLabel}
-          introComplete={introComplete}
-          locale={locale}
-          name={copy.name}
-          navItems={navItems}
-          role={copy.role}
-        />
-
-        <motion.div
-          animate={{
-            opacity: introComplete ? 1 : 0,
-            y: introComplete ? 0 : 24,
-          }}
-          className="mx-auto w-full max-w-[94rem] px-4 pb-16 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pb-20"
-          initial={false}
-          transition={{
-            duration: reduceMotion ? 0 : motionTokens.duration.slow,
-            ease: motionTokens.easing,
-          }}
-        >
-          <AboutSection
-            copy={copy.about}
-            introCard={copy.introCard}
-          />
-          <ProjectsSection
-            copy={copy.projects}
+      {introComplete ? (
+        <div className="relative">
+          <Header
+            alternateLocaleLabel={copy.switchLanguageLabel}
+            introComplete={introComplete}
             locale={locale}
-            projects={projects}
+            name={copy.name}
+            navItems={navItems}
+            role={copy.role}
           />
-          <ServicesSection copy={copy.services} />
-          <ProcessSection copy={copy.process} />
-          <ContactSection copy={copy.contact} />
-        </motion.div>
 
-        <Footer note={copy.footer} />
-      </div>
+          <motion.div
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            className="mx-auto w-full max-w-[94rem] px-4 pb-16 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pb-20"
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+            transition={{
+              duration: reduceMotion ? 0 : motionTokens.duration.slow,
+              ease: motionTokens.easing,
+            }}
+          >
+            <AboutSection
+              copy={copy.about}
+              introCard={copy.introCard}
+            />
+            <ProjectsSection
+              copy={copy.projects}
+              locale={locale}
+              projects={projects}
+            />
+            <ServicesSection copy={copy.services} />
+            <ProcessSection copy={copy.process} />
+            <ContactSection copy={copy.contact} />
+          </motion.div>
+
+          <Footer note={copy.footer} />
+        </div>
+      ) : null}
     </main>
   )
 }

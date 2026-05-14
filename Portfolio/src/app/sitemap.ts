@@ -1,9 +1,19 @@
 import type { MetadataRoute } from 'next'
 
-import { locales, projects } from '@/data/portfolio'
+import { locales } from '@/data/portfolio'
+import { getPortfolioProjectSlugs } from '@/lib/portfolio-content'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://franciscobecamurias.com'
+  const projectSlugs = await getPortfolioProjectSlugs()
+  const getProjectEntries = (locale: (typeof locales)[number]) =>
+    projectSlugs
+      .filter((project) => project.locale === locale)
+      .map((project) => ({
+        url: `${baseUrl}/${locale}/projects/${project.slug}`,
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+      }))
 
   const localizedPages = locales.flatMap((locale) => [
     {
@@ -21,11 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-    ...projects.map((project) => ({
-      url: `${baseUrl}/${locale}/projects/${project.slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    })),
+    ...getProjectEntries(locale),
   ])
 
   return [

@@ -23,6 +23,16 @@ export function Hero({ copy, locale, onComplete }: Props) {
   const [firstName, ...restName] = copy.name.split(' ')
   const lastName = restName.join(' ')
   const alternateLocale = locale === 'pt' ? 'en' : 'pt'
+  const heroLabels =
+    locale === 'pt'
+      ? {
+          scrollPrompt: 'Scroll para entrar',
+          enterLabel: 'Entrar no portfolio',
+        }
+      : {
+          scrollPrompt: 'Scroll to enter',
+          enterLabel: 'Enter portfolio',
+        }
 
   const titleY = useTransform(progress, [0, 1], [0, -92])
   const titleOpacity = useTransform(progress, [0, 0.88, 1], [1, 0.42, 0])
@@ -142,9 +152,13 @@ export function Hero({ copy, locale, onComplete }: Props) {
         style={{ opacity: veilOpacity, y: veilY }}
       />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[94rem] flex-col justify-between gap-14 px-4 pb-12 pt-10 sm:px-6 lg:px-10 lg:pb-14 lg:pt-12">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-[94rem] flex-col justify-between gap-12 px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-10 lg:pb-14 lg:pt-12">
         <div className="flex items-start justify-between gap-6">
-          <p className="max-w-[18rem] font-mono text-[0.72rem] uppercase tracking-[0.24em] text-black/56">
+          <p
+            className={`font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/56 sm:text-[0.72rem] ${
+              locale === 'pt' ? 'max-w-[14rem] sm:max-w-[18rem]' : 'max-w-[18rem]'
+            }`}
+          >
             {copy.hero.eyebrow}
           </p>
           <Link
@@ -155,61 +169,73 @@ export function Hero({ copy, locale, onComplete }: Props) {
           </Link>
         </div>
 
-        <div className="space-y-10 sm:space-y-14">
+        <div className="space-y-8 sm:space-y-12 lg:space-y-14">
           <motion.div
             className="space-y-1 sm:space-y-2"
             style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
           >
             <h1 className="space-y-1 sm:space-y-2">
-              <span className="text-display block text-[4.1rem] text-black sm:text-[7rem] lg:text-[10rem] xl:text-[12rem]">
+              <span className="text-display block text-[3.75rem] text-black sm:text-[6.4rem] lg:text-[9.4rem] xl:text-[11.2rem]">
                 {firstName}
               </span>
-              <span className="text-display ml-[7vw] block text-[4.1rem] text-black sm:ml-[9vw] sm:text-[7rem] lg:ml-[11vw] lg:text-[10rem] xl:text-[12rem]">
+              <span className="text-display ml-[6vw] block text-[3.75rem] text-black sm:ml-[8vw] sm:text-[6.4rem] lg:ml-[10vw] lg:text-[9.4rem] xl:text-[11.2rem]">
                 {lastName}
               </span>
-              <span className="mt-4 block max-w-[15ch] text-[1rem] font-medium leading-[1.08] tracking-[-0.04em] text-black/74 sm:text-[1.2rem] lg:text-[1.4rem]">
+              <span
+                className={`mt-4 block text-[0.95rem] font-medium leading-[1.12] tracking-[-0.035em] text-black/74 sm:text-[1.14rem] lg:text-[1.3rem] ${
+                  locale === 'pt' ? 'max-w-[19ch]' : 'max-w-[15ch]'
+                }`}
+              >
                 {copy.role}
               </span>
             </h1>
           </motion.div>
 
           <motion.div
-            className="grid gap-8 border-t border-black/10 pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end"
+            className="grid gap-7 border-t border-black/10 pt-5 sm:pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end"
             style={{ opacity: descriptionOpacity, y: descriptionY }}
           >
-            <div className="space-y-6">
-              <p className="max-w-[12ch] text-[1.9rem] font-medium leading-[0.98] tracking-[-0.05em] text-black sm:text-[2.7rem] lg:text-[3.8rem]">
+            <div className="space-y-5">
+              <p
+                className={`text-[1.75rem] font-medium leading-[1] tracking-[-0.045em] text-black sm:text-[2.45rem] lg:text-[3.45rem] ${
+                  locale === 'pt' ? 'max-w-[14ch]' : 'max-w-[12ch]'
+                }`}
+              >
                 {copy.hero.title}
               </p>
-              <p className="max-w-[22rem] text-[1rem] leading-[1.78] text-black/82 sm:text-[1.05rem]">
+              <p
+                className={`text-[0.98rem] leading-[1.74] text-black/82 sm:text-[1.03rem] ${
+                  locale === 'pt' ? 'max-w-[23rem]' : 'max-w-[22rem]'
+                }`}
+              >
                 {copy.hero.description}
               </p>
             </div>
 
             <div className="space-y-4 lg:text-right">
               <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/52">
-                Scroll to enter
+                {heroLabels.scrollPrompt}
               </p>
-              <p className="max-w-[16rem] text-[0.95rem] leading-[1.72] text-black/72 lg:ml-auto">
+              <p className={`text-[0.92rem] leading-[1.68] text-black/72 lg:ml-auto ${locale === 'pt' ? 'max-w-[17rem]' : 'max-w-[16rem]'}`}>
                 {copy.hero.note}
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            className="flex items-center gap-4"
+            className="flex items-center gap-3 sm:gap-4"
             style={{ opacity: descriptionOpacity }}
           >
             <span className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/56">
               Scroll
             </span>
-            <div className="relative h-px w-full max-w-[17rem] bg-black/8">
+            <div className="relative h-px w-full max-w-[13rem] bg-black/8 sm:max-w-[17rem]">
               <motion.div
                 className="absolute inset-y-0 left-0 bg-black/60"
                 style={{ width: progressWidth }}
               />
             </div>
-            <span className="font-mono text-sm text-black/72">Enter portfolio</span>
+            <span className="font-mono text-[0.82rem] text-black/72 sm:text-sm">{heroLabels.enterLabel}</span>
           </motion.div>
         </div>
       </div>

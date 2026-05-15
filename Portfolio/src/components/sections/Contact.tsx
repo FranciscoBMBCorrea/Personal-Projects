@@ -28,7 +28,7 @@ export function ContactSection({ copy }: Props) {
             >
               {copy.title}
             </Heading>
-            <p className="max-w-[30rem] text-base leading-[1.78] text-black/82">
+            <p className="measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82">
               {copy.description}
             </p>
 

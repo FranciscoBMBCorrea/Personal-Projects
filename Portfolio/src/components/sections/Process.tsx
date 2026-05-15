@@ -40,10 +40,10 @@ export function ProcessSection({ copy }: Props) {
                 <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/54">
                   {step.number}
                 </p>
-                <h3 className="text-[1.7rem] font-medium leading-[1.02] tracking-[-0.045em] text-black sm:text-[2.1rem]">
+                <h3 className="text-serif text-[1.7rem] font-medium leading-[1.02] tracking-[-0.04em] text-black sm:text-[2.1rem]">
                   {step.title}
                 </h3>
-                <p className="max-w-[30rem] text-sm leading-[1.7] text-black/78">
+                <p className="measure-copy text-sm leading-[1.72] text-black/78">
                   {step.text}
                 </p>
               </article>

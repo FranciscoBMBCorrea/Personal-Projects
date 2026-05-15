@@ -3,6 +3,7 @@ import type { Locale, PortfolioProject } from '@/data/portfolio-types'
 const localizedProjects = [
   {
     slug: 'cabana',
+    disciplineKey: 'projectista',
     year: '2016',
     location: 'Gerês',
     category: 'Academic',
@@ -11,6 +12,7 @@ const localizedProjects = [
     status: 'Académico',
     accent: 'from-stone-200 via-stone-100 to-stone-300',
     pt: {
+      discipline: 'Projectista',
       title: 'Cabana',
       summary:
         'Exercício académico para uma cabana no Gerês, desenvolvido como estudo de implantação, abrigo e relação direta com a paisagem.',
@@ -33,6 +35,7 @@ const localizedProjects = [
       highlights: ['Paisagem', 'Abrigo', 'Projeto académico'],
     },
     en: {
+      discipline: 'Drafting and technical design',
       title: 'Cabana',
       summary:
         'An academic exercise for a cabin in Gerês, developed as a study of siting, shelter, and direct relationship with the landscape.',
@@ -57,6 +60,7 @@ const localizedProjects = [
   },
   {
     slug: 'acoustic-mirror',
+    disciplineKey: 'projectista',
     year: '2017',
     location: 'Parque das Necessidades, Lisboa, Portugal',
     category: 'Academic',
@@ -65,6 +69,7 @@ const localizedProjects = [
     status: 'Académico',
     accent: 'from-zinc-100 via-stone-50 to-stone-200',
     pt: {
+      discipline: 'Projectista',
       title: 'Acoustic Mirror',
       summary:
         'Projeto académico concebido para o Parque das Necessidades, centrado na relação entre som, reflexão e presença escultórica no espaço.',
@@ -87,6 +92,7 @@ const localizedProjects = [
       highlights: ['Som', 'Instalação', 'Projeto académico'],
     },
     en: {
+      discipline: 'Drafting and technical design',
       title: 'Acoustic Mirror',
       summary:
         'An academic project conceived for Parque das Necessidades, focused on the relationship between sound, reflection, and sculptural presence in space.',
@@ -111,6 +117,7 @@ const localizedProjects = [
   },
   {
     slug: 'campolide',
+    disciplineKey: 'interior-architecture',
     year: '2018',
     location: 'Campolide, Lisboa, Portugal',
     category: 'Retail',
@@ -119,6 +126,7 @@ const localizedProjects = [
     status: 'Não concluído',
     accent: 'from-stone-200 via-stone-100 to-amber-50',
     pt: {
+      discipline: 'Arquitetura de interiores',
       title: 'Campolide',
       summary:
         'Proposta para a Letreiro Galeria em Campolide, desenvolvida como estudo de organização espacial, escala expositiva e circulação.',
@@ -141,6 +149,7 @@ const localizedProjects = [
       highlights: ['Escala', 'Galeria', 'Não concluído'],
     },
     en: {
+      discipline: 'Interior architecture',
       title: 'Campolide',
       summary:
         'A proposal for Letreiro Galeria in Campolide, developed as a study in spatial organization, exhibition scale, and circulation.',
@@ -165,6 +174,7 @@ const localizedProjects = [
   },
   {
     slug: 'casa-amarela',
+    disciplineKey: 'interior-architecture',
     year: '2026',
     location: 'Laguna, Cabeçuda, SC, Brasil',
     category: 'Residential',
@@ -173,6 +183,7 @@ const localizedProjects = [
     status: 'Em fase de projeto',
     accent: 'from-amber-100 via-stone-50 to-yellow-100',
     pt: {
+      discipline: 'Arquitetura de interiores',
       title: 'Casa Amarela',
       summary:
         'Projeto próprio em desenvolvimento para Laguna, pensado a partir de luz, memória doméstica e uma presença cromática contida.',
@@ -195,6 +206,7 @@ const localizedProjects = [
       highlights: ['Projeto próprio', 'Em desenvolvimento', 'Atmosfera'],
     },
     en: {
+      discipline: 'Interior architecture',
       title: 'Casa Amarela',
       summary:
         'A self-initiated project in development for Laguna, shaped through light, domestic memory, and restrained chromatic presence.',
@@ -222,6 +234,7 @@ const localizedProjects = [
 export function getProjects(locale: Locale): PortfolioProject[] {
   return localizedProjects.map((project) => ({
     slug: project.slug,
+    disciplineKey: project.disciplineKey,
     year: project.year,
     location: project.location,
     category: project.category,
@@ -242,6 +255,7 @@ export function getProject(locale: Locale, slug: string): PortfolioProject | nul
 
   return {
     slug: project.slug,
+    disciplineKey: project.disciplineKey,
     year: project.year,
     location: project.location,
     category: project.category,

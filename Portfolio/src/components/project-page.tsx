@@ -85,6 +85,12 @@ export function ProjectPage({ locale, copy, project }: Props) {
           <div className="space-y-4 border-l border-black/10 pl-0 lg:pl-8">
             <div>
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
+                {locale === 'pt' ? 'Área de atuação' : 'Discipline'}
+              </p>
+              <p className="mt-2 text-base leading-[1.6] text-black/84">{project.discipline}</p>
+            </div>
+            <div>
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56">
                 {locale === 'pt' ? 'Área' : 'Area'}
               </p>
               <p className="mt-2 text-base leading-[1.6] text-black/84">{project.area}</p>

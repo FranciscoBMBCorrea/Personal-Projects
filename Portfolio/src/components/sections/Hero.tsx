@@ -156,7 +156,7 @@ export function Hero({ copy, locale, onComplete }: Props) {
         <div className="flex items-start justify-between gap-6">
           <p
             className={`font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/56 sm:text-[0.72rem] ${
-              locale === 'pt' ? 'max-w-[14rem] sm:max-w-[18rem]' : 'max-w-[18rem]'
+              locale === 'pt' ? 'max-w-[15rem] sm:max-w-[19rem]' : 'max-w-[18rem]'
             }`}
           >
             {copy.hero.eyebrow}
@@ -175,15 +175,15 @@ export function Hero({ copy, locale, onComplete }: Props) {
             style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
           >
             <h1 className="space-y-1 sm:space-y-2">
-              <span className="text-display block text-[3.75rem] text-black sm:text-[6.4rem] lg:text-[9.4rem] xl:text-[11.2rem]">
+              <span className="text-display block text-[var(--font-size-h1)] text-black">
                 {firstName}
               </span>
-              <span className="text-display ml-[6vw] block text-[3.75rem] text-black sm:ml-[8vw] sm:text-[6.4rem] lg:ml-[10vw] lg:text-[9.4rem] xl:text-[11.2rem]">
+              <span className="text-display ml-[6vw] block text-[var(--font-size-h1)] text-black sm:ml-[8vw] lg:ml-[10vw]">
                 {lastName}
               </span>
               <span
-                className={`mt-4 block text-[0.95rem] font-medium leading-[1.12] tracking-[-0.035em] text-black/74 sm:text-[1.14rem] lg:text-[1.3rem] ${
-                  locale === 'pt' ? 'max-w-[19ch]' : 'max-w-[15ch]'
+                className={`mt-5 block text-[clamp(1rem,0.9rem+0.35vw,1.28rem)] font-medium leading-[1.12] tracking-[-0.03em] text-black/72 ${
+                  locale === 'pt' ? 'max-w-[21ch]' : 'max-w-[17ch]'
                 }`}
               >
                 {copy.role}
@@ -197,15 +197,15 @@ export function Hero({ copy, locale, onComplete }: Props) {
           >
             <div className="space-y-5">
               <p
-                className={`text-[1.75rem] font-medium leading-[1] tracking-[-0.045em] text-black sm:text-[2.45rem] lg:text-[3.45rem] ${
+                className={`text-serif text-[clamp(1.95rem,4vw,3.7rem)] font-medium leading-[1] tracking-[-0.04em] text-black ${
                   locale === 'pt' ? 'max-w-[14ch]' : 'max-w-[12ch]'
                 }`}
               >
                 {copy.hero.title}
               </p>
               <p
-                className={`text-[0.98rem] leading-[1.74] text-black/82 sm:text-[1.03rem] ${
-                  locale === 'pt' ? 'max-w-[23rem]' : 'max-w-[22rem]'
+                className={`measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82 ${
+                  locale === 'pt' ? 'max-w-[24rem]' : 'max-w-[22rem]'
                 }`}
               >
                 {copy.hero.description}
@@ -216,7 +216,7 @@ export function Hero({ copy, locale, onComplete }: Props) {
               <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/52">
                 {heroLabels.scrollPrompt}
               </p>
-              <p className={`text-[0.92rem] leading-[1.68] text-black/72 lg:ml-auto ${locale === 'pt' ? 'max-w-[17rem]' : 'max-w-[16rem]'}`}>
+              <p className={`text-[0.95rem] leading-[1.68] tracking-[-0.01em] text-black/72 lg:ml-auto ${locale === 'pt' ? 'max-w-[18rem]' : 'max-w-[16rem]'}`}>
                 {copy.hero.note}
               </p>
             </div>

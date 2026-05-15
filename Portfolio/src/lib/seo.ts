@@ -6,12 +6,14 @@ export const siteUrl = 'https://franciscobecamurias.com'
 
 export const seoKeywords = [
   'designer de interiores',
+  'móveis planejados',
   'desenho 2D',
   'modelação 3D',
   'renderização 3D',
   'visualização de interiores',
   'freelance',
   'arquitetura de interiores',
+  'custom furniture',
   'interior designer',
   '2D drafting',
   '3D visualization',
@@ -121,6 +123,7 @@ export function createProfessionalServiceSchema(copy: PortfolioCopy, locale: Loc
     areaServed: ['Portugal', 'Brazil'],
     serviceType: [
       'designer de interiores',
+      'móveis planejados',
       'desenho 2D',
       'modelação 3D',
       'renderização 3D',

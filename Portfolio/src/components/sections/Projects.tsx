@@ -75,13 +75,14 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
             >
               {copy.title}
             </Heading>
-            <p className="max-w-[18rem] text-sm leading-[1.7] text-black/78">
+            <p className="measure-narrow text-sm leading-[1.7] text-black/78">
               {copy.description}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 border-y border-black/10 py-4">
             <button
+              aria-pressed={activeGroup === 'all'}
               className={`min-h-11 rounded-full px-4 text-sm transition ${
                 activeGroup === 'all'
                   ? 'bg-black text-white'
@@ -94,6 +95,7 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
             </button>
             {groups.map((group) => (
               <button
+                aria-pressed={activeGroup === group.key}
                 key={group.key}
                 className={`min-h-11 rounded-full px-4 text-sm transition ${
                   activeGroup === group.key
@@ -159,10 +161,10 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
 
                           <div className="space-y-5">
                             <div className="space-y-4">
-                              <h3 className="text-[2.35rem] leading-[0.98] tracking-[-0.055em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.5rem] lg:text-[4.6rem]">
+                              <h3 className="text-serif text-[2.35rem] leading-[0.98] tracking-[-0.05em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.5rem] lg:text-[4.6rem]">
                                 {project.title}
                               </h3>
-                              <p className="max-w-[36rem] text-base leading-[1.76] text-black/82">
+                              <p className="measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82">
                                 {project.summary}
                               </p>
                               <p className="max-w-[28rem] font-mono text-[0.68rem] uppercase tracking-[0.16em] text-black/58">
@@ -184,6 +186,8 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
                                   alt={project.images[0].alt}
                                   className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                                   height={1200}
+                                  loading="lazy"
+                                  sizes="(max-width: 1024px) 100vw, 320px"
                                   src={project.images[0].url}
                                   width={960}
                                 />

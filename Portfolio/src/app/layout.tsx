@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Francisco Beça Múrias | Portfolio',
   description:
-    'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, desenho 2D, modelação 3D e visualização de interiores.',
+    'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, móveis planejados, desenho 2D, modelação 3D e visualização de interiores.',
   applicationName: 'Francisco Beça Múrias Portfolio',
   category: 'design',
   keywords: seoKeywords,
   openGraph: {
     title: 'Francisco Beça Múrias | Interior Design Portfolio',
     description:
-      'Portfolio bilingue de design de interiores, desenho 2D, modelação 3D e visualização de interiores com linguagem minimalista e elegante.',
+      'Portfolio bilingue de design de interiores, móveis planejados, desenho 2D, modelação 3D e visualização de interiores com linguagem minimalista e elegante.',
     locale: 'pt_PT',
     type: 'website',
     url: siteUrl,
@@ -30,8 +30,7 @@ export const metadata: Metadata = {
         url: buildOgImageUrl({
           locale: 'pt',
           title: 'Francisco Beça Múrias | Interior Design Portfolio',
-          description:
-            'Designer de interiores, desenho 2D, modelação 3D e visualização de interiores.',
+          description: 'Designer de interiores, móveis planejados, desenho 2D, modelação 3D e visualização de interiores.',
         }),
         width: 1200,
         height: 630,
@@ -43,13 +42,13 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Francisco Beça Múrias | Interior Design Portfolio',
     description:
-      'Portfolio bilingue de design de interiores, desenho 2D, modelação 3D e visualização de interiores.',
+      'Portfolio bilingue de design de interiores, móveis planejados, desenho 2D, modelação 3D e visualização de interiores.',
     images: [
       buildOgImageUrl({
         locale: 'pt',
         title: 'Francisco Beça Múrias | Interior Design Portfolio',
         description:
-          'Designer de interiores, desenho 2D, modelação 3D e visualização de interiores.',
+          'Designer de interiores, móveis planejados, desenho 2D, modelação 3D e visualização de interiores.',
       }),
     ],
   },

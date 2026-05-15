@@ -1,13 +1,21 @@
 import type { Metadata } from 'next'
-import { Noto_Sans } from 'next/font/google'
+import { Manrope, Newsreader } from 'next/font/google'
 import './globals.css'
 
 import { buildOgImageUrl, seoKeywords, siteUrl } from '@/lib/seo'
 
-const notoSans = Noto_Sans({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-noto-sans',
+  variable: '--font-manrope',
   display: 'swap',
+  preload: true,
+})
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -67,8 +75,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-PT" className={notoSans.variable}>
-      <body className="antialiased">{children}</body>
+    <html lang="pt-PT" className={`${manrope.variable} ${newsreader.variable}`}>
+      <body className="antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }

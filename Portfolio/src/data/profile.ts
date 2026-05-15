@@ -22,12 +22,12 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
     localeLabel: 'pt_PT',
     siteTitle: 'Francisco Beça Múrias | Portfolio',
     siteDescription:
-      'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, desenho 2D e visualização 3D.',
+      'Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, móveis planejados, desenho 2D e visualização 3D.',
     ogTitle: 'Francisco Beça Múrias | Interior Design Portfolio',
     ogDescription:
-      'Portfolio bilingue de design de interiores, desenho 2D e visualização 3D com linguagem minimalista e elegante.',
+      'Portfolio bilingue de design de interiores, móveis planejados, desenho 2D e visualização 3D com linguagem minimalista e elegante.',
     name: 'Francisco Beça Múrias',
-    role: 'Design de interiores · 2D · 3D',
+    role: 'Design de interiores · móveis planejados · 2D · 3D',
     nav: {
       home: 'Início',
       about: 'Sobre',
@@ -37,10 +37,10 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
       contact: 'Contacto',
     },
     hero: {
-      eyebrow: 'Design de interiores · desenho 2D · visualização 3D',
+      eyebrow: 'Design de interiores · móveis planejados · desenho 2D · visualização 3D',
       title: 'Projetos espaciais apresentados com clareza, critério e direção visual.',
       description:
-        'Designer de interiores com foco em leitura espacial, desenho 2D e visualização 3D. O portfolio foi organizado para mostrar cada projeto de forma clara: contexto, decisão e resultado.',
+        'Designer de interiores com foco em leitura espacial, móveis planejados, desenho 2D e visualização 3D. O portfolio foi organizado para mostrar cada projeto de forma clara: contexto, decisão e resultado.',
       primaryCta: 'Ver projetos',
       secondaryCta: 'Contactar',
       note: 'Disponível para projetos residenciais, cultura, retail e colaboração com estúdios.',
@@ -77,6 +77,10 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
         {
           title: 'Interior design',
           text: 'Organização do espaço, linguagem do projeto e construção de atmosfera para contextos residenciais ou comerciais.',
+        },
+        {
+          title: 'Móveis planejados',
+          text: 'Desenho de soluções à medida para marcenaria, arrumação e integração funcional com o espaço.',
         },
         {
           title: 'Desenho 2D',
@@ -123,7 +127,7 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
       label: 'Sobre',
       title: 'Uma prática que junta clareza espacial, detalhe técnico e sensibilidade visual.',
       intro:
-        'Francisco Beça Múrias trabalha entre design de interiores, desenho 2D e visualização 3D, com interesse particular por espaços que conciliam contenção formal e experiência sensorial.',
+        'Francisco Beça Múrias trabalha entre design de interiores, móveis planejados, desenho 2D e visualização 3D, com interesse particular por espaços que conciliam contenção formal e experiência sensorial.',
       body: [
         'O portfolio foi pensado para comunicar não apenas o resultado final, mas também o raciocínio por trás de cada ambiente: leitura do espaço, fluxo, materialidade e composição.',
         'A apresentação privilegia um tom editorial, mais próximo de um caderno de estúdio do que de um site promocional genérico, ajudando a posicionar o trabalho de forma mais autoral.',
@@ -162,12 +166,12 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
     localeLabel: 'en_US',
     siteTitle: 'Francisco Beça Múrias | Portfolio',
     siteDescription:
-      'Personal portfolio for Francisco Beça Múrias focused on interior design, 2D drafting, and 3D visualization.',
+      'Personal portfolio for Francisco Beça Múrias focused on interior design, custom furniture, 2D drafting, and 3D visualization.',
     ogTitle: 'Francisco Beça Múrias | Interior Design Portfolio',
     ogDescription:
-      'Bilingual portfolio focused on interior design, 2D drafting, and 3D visualization with a refined minimal visual language.',
+      'Bilingual portfolio focused on interior design, custom furniture, 2D drafting, and 3D visualization with a refined minimal visual language.',
     name: 'Francisco Beça Múrias',
-    role: 'Interior design · 2D · 3D',
+    role: 'Interior design · custom furniture · 2D · 3D',
     nav: {
       home: 'Home',
       about: 'About',
@@ -177,10 +181,10 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
       contact: 'Contact',
     },
     hero: {
-      eyebrow: 'Interior designer · 2D drafting · 3D visualization',
+      eyebrow: 'Interior design · custom furniture · 2D drafting · 3D visualization',
       title: 'Spatial projects presented with clarity, judgment, and visual direction.',
       description:
-        'Interior designer focused on spatial reading, 2D drafting, and 3D visualization. The portfolio is structured to make each project easy to read: context, decision, and outcome.',
+        'Interior designer focused on spatial reading, custom furniture, 2D drafting, and 3D visualization. The portfolio is structured to make each project easy to read: context, decision, and outcome.',
       primaryCta: 'View projects',
       secondaryCta: 'Get in touch',
       note: 'Available for residential, cultural, retail, and studio collaboration work.',
@@ -217,6 +221,10 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
         {
           title: 'Interior design',
           text: 'Spatial organization, project language, and atmosphere building for residential or commercial settings.',
+        },
+        {
+          title: 'Custom furniture',
+          text: 'Tailored millwork and storage solutions designed to integrate function, proportion, and material clarity.',
         },
         {
           title: '2D drafting',
@@ -263,7 +271,7 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
       label: 'About',
       title: 'A practice shaped by spatial clarity, technical precision, and visual sensitivity.',
       intro:
-        'Francisco Beça Múrias works between interior design, 2D drafting, and 3D visualization, with a particular interest in spaces that balance formal restraint and sensory experience.',
+        'Francisco Beça Múrias works between interior design, custom furniture, 2D drafting, and 3D visualization, with a particular interest in spaces that balance formal restraint and sensory experience.',
       body: [
         'The portfolio is designed to communicate not only final outcomes, but also the thinking behind each environment: spatial reading, flow, materiality, and composition.',
         'The presentation leans toward an editorial tone, closer to a studio notebook than a generic promotional website, helping position the work in a more authored way.',
@@ -294,7 +302,7 @@ export const profileContent: Record<Locale, PortfolioCopy> = {
         },
       ],
     },
-    footer: 'Interior design and 2D/3D visualization portfolio.',
+    footer: 'Interior design, custom furniture, and 2D/3D visualization portfolio.',
   },
 }
 

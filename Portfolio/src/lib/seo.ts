@@ -29,14 +29,8 @@ export function buildOgImageUrl(input: {
   description: string
   type?: string
 }) {
-  const params = new URLSearchParams({
-    locale: input.locale,
-    title: input.title,
-    description: input.description,
-    type: input.type ?? 'Portfolio',
-  })
-
-  return absoluteUrl(`/api/og?${params.toString()}`)
+  void input
+  return absoluteUrl('/og-image.png')
 }
 
 export function buildPageMetadata(input: {
@@ -141,6 +135,21 @@ export function createWebsiteSchema(copy: PortfolioCopy, locale: Locale) {
     url: absoluteUrl(`/${locale}`),
     description: copy.siteDescription,
     inLanguage: locale === 'pt' ? 'pt-PT' : 'en-US',
+  }
+}
+
+export function createProfilePageSchema(copy: PortfolioCopy, locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': absoluteUrl(`/${locale}/about#profile`),
+    url: absoluteUrl(`/${locale}/about`),
+    name: `${copy.name} | ${copy.nav.about}`,
+    description: copy.aboutPage.intro,
+    inLanguage: locale === 'pt' ? 'pt-PT' : 'en-US',
+    mainEntity: {
+      '@id': `${siteUrl}#person`,
+    },
   }
 }
 

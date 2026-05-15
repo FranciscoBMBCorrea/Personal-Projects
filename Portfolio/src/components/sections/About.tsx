@@ -30,7 +30,7 @@ export function AboutSection({ copy, introCard }: Props) {
             {copy.title}
           </Heading>
           <TextBlock
-            className="max-w-[38rem]"
+            className="measure-copy"
             paragraphs={copy.paragraphs}
           />
         </div>

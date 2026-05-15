@@ -102,6 +102,7 @@ export function Header({
           <button
             aria-controls="mobile-navigation"
             aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-black/12 px-4 py-2 text-sm text-black/82 transition hover:border-black/28 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20 md:hidden"
             onClick={() => setIsMenuOpen((value) => !value)}
             type="button"
@@ -128,22 +129,22 @@ export function Header({
                 className="flex flex-col px-1 py-3"
               >
                 {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    className="inline-flex min-h-11 items-center rounded-xl px-4 py-3 text-base text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <Link
-                  key={item.href}
-                  className="inline-flex min-h-11 items-center rounded-xl px-4 py-3 text-base text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
-                  href={item.href}
+                  className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-black/10 px-4 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                  href={nextLocalePath}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  {alternateLocaleLabel}
                 </Link>
-              ))}
-              <Link
-                className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-black/10 px-4 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
-                href={nextLocalePath}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {alternateLocaleLabel}
-              </Link>
               </nav>
             </motion.div>
           ) : null}

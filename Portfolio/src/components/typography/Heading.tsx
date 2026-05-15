@@ -7,12 +7,13 @@ type Props = {
   className?: string
   eyebrow?: string
   size?: 'hero' | 'section' | 'card'
+  tone?: 'auto' | 'sans' | 'serif'
 }
 
 const sizeClasses = {
-  hero: 'text-[clamp(3.3rem,11vw,10rem)] leading-[0.92] tracking-[-0.07em] font-semibold',
-  section: 'text-[clamp(2rem,5vw,4.6rem)] leading-[0.98] tracking-[-0.06em] font-semibold',
-  card: 'text-[clamp(1.8rem,4vw,3.5rem)] leading-[0.98] tracking-[-0.05em] font-semibold',
+  hero: 'text-[var(--font-size-h1)] leading-[var(--line-height-tight)] tracking-[var(--tracking-display)] font-semibold',
+  section: 'text-[var(--font-size-h2)] leading-[var(--line-height-heading)] tracking-[var(--tracking-heading)] font-medium',
+  card: 'text-[var(--font-size-h3)] leading-[var(--line-height-heading)] tracking-[-0.045em] font-medium',
 } as const
 
 export function Heading({
@@ -22,7 +23,17 @@ export function Heading({
   className,
   eyebrow,
   size = 'section',
+  tone = 'auto',
 }: Props) {
+  const fontClass =
+    tone === 'sans'
+      ? 'text-condensed'
+      : tone === 'serif'
+        ? 'text-serif'
+        : size === 'hero'
+          ? 'text-display'
+          : 'text-serif'
+
   return (
     <div className={cn('space-y-4', align === 'right' && 'text-right')}>
       {eyebrow ? (
@@ -30,7 +41,7 @@ export function Heading({
           {eyebrow}
         </p>
       ) : null}
-      <Tag className={cn(sizeClasses[size], 'text-black', className)}>{children}</Tag>
+      <Tag className={cn(fontClass, sizeClasses[size], 'text-balance text-black', className)}>{children}</Tag>
     </div>
   )
 }

@@ -88,6 +88,8 @@ export type PortfolioCopy = {
 
 export type PortfolioProject = {
   slug: string
+  disciplineKey: 'interior-architecture' | 'projectista'
+  discipline: string
   year: string
   location: string
   category: string

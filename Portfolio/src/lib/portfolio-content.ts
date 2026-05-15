@@ -31,6 +31,7 @@ type ProjectDocument = prismic.PrismicDocument
 type SettingsDocument = prismic.PrismicDocument
 
 type ProjectDocumentData = {
+  discipline?: prismic.KeyTextField
   title?: prismic.KeyTextField
   year?: prismic.NumberField
   location?: prismic.KeyTextField
@@ -156,6 +157,8 @@ function mapProjectDocument(document: ProjectDocument): CMSPortfolioProject | nu
 
   return {
     slug: document.uid,
+    disciplineKey: 'projectista',
+    discipline: asText(data.discipline) || 'Projectista',
     title,
     year: String(data.year ?? ''),
     location: asText(data.location) || 'Location pending',

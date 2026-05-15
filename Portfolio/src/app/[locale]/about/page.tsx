@@ -5,7 +5,12 @@ import { StructuredData } from '@/components/seo/structured-data'
 import { locales } from '@/data/portfolio'
 import { getPortfolioSiteCopy } from '@/lib/portfolio-content'
 import { resolveLocale, resolveOptionalLocale } from '@/lib/route-params'
-import { buildPageMetadata, createBreadcrumbSchema, createPersonSchema } from '@/lib/seo'
+import {
+  buildPageMetadata,
+  createBreadcrumbSchema,
+  createPersonSchema,
+  createProfilePageSchema,
+} from '@/lib/seo'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -37,6 +42,7 @@ export default async function AboutRoutePage({ params }: Props) {
   const copy = await getPortfolioSiteCopy(locale)
   const schema = [
     createPersonSchema(copy),
+    createProfilePageSchema(copy, locale),
     createBreadcrumbSchema([
       { name: copy.nav.home, path: `/${locale}` },
       { name: copy.nav.about, path: `/${locale}/about` },

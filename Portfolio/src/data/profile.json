@@ -27,7 +27,7 @@
       "nav": {
         "home": "Início",
         "about": "Sobre",
-        "projects": "Projetos",
+        "projects": "Trabalhos",
         "services": "Serviços",
         "process": "Processo",
         "contact": "Contacto"
@@ -57,31 +57,31 @@
         ]
       },
       "projects": {
-        "label": "Projetos",
-        "title": "Projetos organizados por área de atuação, com contexto claro, decisão espacial e leitura consistente.",
-        "description": "A seleção cruza arquitetura de interiores e trabalho de projectista, sempre com a mesma lógica de leitura: contexto, síntese, desenvolvimento e material apresentado.",
-        "cta": "Abrir projeto"
+        "label": "Projetos selecionados",
+        "title": "Uma seleção de interiores, desenhos 2D, estudos 3D, moodboards e imagens de apresentação.",
+        "description": "Cada entrada mostra uma leitura espacial concreta: programa, atmosfera, desenho, materialidade e o tipo de visual usado para comunicar a proposta.",
+        "cta": "Ver estudo"
       },
       "services": {
         "label": "O que faço",
-        "title": "Áreas de trabalho explicadas de forma direta, sem ruído.",
-        "description": "A estrutura é simples: pensar o espaço, desenhá-lo com rigor e comunicá-lo com imagens claras.",
+        "title": "Apoio visual e técnico para interiores, do conceito à apresentação.",
+        "description": "Trabalho entre design de interiores, desenho 2D, visualização 3D e direção visual, com apoio pontual ou contínuo a arquitetos, designers e estúdios.",
         "items": [
           {
             "title": "Design de interiores",
-            "text": "Organização do espaço, linguagem do projeto e construção de atmosfera para contextos residenciais ou comerciais."
+            "text": "Organização espacial, leitura de programa, composição e atmosfera para contextos residenciais, comerciais ou editoriais."
           },
           {
-            "title": "Mobiliário à medida",
-            "text": "Desenho de soluções à medida para marcenaria, arrumação e integração funcional com o espaço."
+            "title": "Moodboards e direção visual",
+            "text": "Construção de referências, paletas, materialidade e linguagem visual para orientar decisões e alinhar a apresentação do projeto."
           },
           {
-            "title": "Desenho 2D",
-            "text": "Plantas, layouts e documentação visual pensados para comunicar o projeto sem excesso nem ambiguidade."
+            "title": "Desenho técnico e 2D",
+            "text": "Plantas, layouts, estudos de implantação e peças de apresentação desenhadas para comunicar o projeto com rigor e clareza."
           },
           {
             "title": "Visualização 3D",
-            "text": "Renders, perspetivas e imagens de apresentação usadas para dar espessura visual às decisões espaciais."
+            "text": "Renders, perspetivas e estudos visuais que traduzem atmosfera, escala, luz e materialidade antes da execução."
           }
         ]
       },
@@ -162,7 +162,7 @@
       "nav": {
         "home": "Home",
         "about": "About",
-        "projects": "Projects",
+        "projects": "Work",
         "services": "Services",
         "process": "Process",
         "contact": "Contact"
@@ -192,31 +192,31 @@
         ]
       },
       "projects": {
-        "label": "Projects",
-        "title": "Four projects presented as spatial studies, each with context, a core question, and a response.",
-        "description": "Each page follows the same reading logic to make comparison easier: context, summary, development, included material, and visual sequence.",
-        "cta": "Open project"
+        "label": "Selected Work",
+        "title": "A selection of interiors, 2D drawings, 3D studies, moodboards, and presentation images.",
+        "description": "Each entry frames a spatial reading: program, atmosphere, drawing, materiality, and the visual material used to communicate the proposal.",
+        "cta": "View study"
       },
       "services": {
         "label": "What I do",
-        "title": "Three areas of work, explained directly.",
-        "description": "The structure is simple: shape the space, draw it clearly, and communicate it with strong images.",
+        "title": "Visual and technical support for interiors, from concept to presentation.",
+        "description": "Work across interior design, 2D drawing, 3D visualization, and visual direction, with focused or ongoing support for architects, interior designers, and studios.",
         "items": [
           {
             "title": "Interior design",
-            "text": "Spatial organization, project language, and atmosphere building for residential or commercial settings."
+            "text": "Spatial organization, program reading, composition, and atmosphere for residential, commercial, or editorial contexts."
           },
           {
-            "title": "Custom furniture",
-            "text": "Tailored millwork and storage solutions designed to integrate function, proportion, and material clarity."
+            "title": "Moodboards and visual direction",
+            "text": "Reference boards, palettes, material direction, and visual language to guide decisions and align the project presentation."
           },
           {
-            "title": "2D drafting",
-            "text": "Plans, layouts, and visual documentation designed to communicate the project without ambiguity."
+            "title": "Technical and 2D drawings",
+            "text": "Plans, layouts, siting studies, and presentation drawings made to communicate the project with precision and clarity."
           },
           {
             "title": "3D visualization",
-            "text": "Renders, perspectives, and presentation imagery that give visual weight to spatial decisions."
+            "text": "Renders, perspectives, and visual studies that translate atmosphere, scale, light, and materiality before execution."
           }
         ]
       },

@@ -17,8 +17,83 @@ type Props = {
   projects: CMSPortfolioProject[]
 }
 
+const selectedWorkSlugs = ['casa-amarela', 'campolide', 'acoustic-mirror']
+
+function getListingCategory(project: CMSPortfolioProject, locale: Props['locale']) {
+  if (project.status?.toLowerCase().includes('em fase')) {
+    return locale === 'pt' ? 'Estudo residencial' : 'Residential study'
+  }
+
+  if (project.status?.toLowerCase().includes('acad')) {
+    return locale === 'pt' ? 'Estudo visual' : 'Visual study'
+  }
+
+  if (project.status?.toLowerCase().includes('não conclu')) {
+    return locale === 'pt' ? 'Estudo de conceito' : 'Concept study'
+  }
+
+  return project.category
+}
+
+function getListingStatus(project: CMSPortfolioProject, locale: Props['locale']) {
+  if (!project.status) {
+    return null
+  }
+
+  if (project.status.toLowerCase().includes('acad')) {
+    return locale === 'pt' ? 'Estudo selecionado' : 'Selected study'
+  }
+
+  if (project.status.toLowerCase().includes('não conclu')) {
+    return locale === 'pt' ? 'Conceito espacial' : 'Spatial concept'
+  }
+
+  if (project.status.toLowerCase().includes('em fase')) {
+    return locale === 'pt' ? 'Em desenvolvimento' : 'In development'
+  }
+
+  return project.status
+}
+
+function getListingHighlight(highlight: string, locale: Props['locale']) {
+  if (highlight.toLowerCase().includes('acad')) {
+    return locale === 'pt' ? 'Estudo selecionado' : 'Selected study'
+  }
+
+  if (highlight.toLowerCase().includes('não conclu')) {
+    return locale === 'pt' ? 'Conceito espacial' : 'Spatial concept'
+  }
+
+  return highlight
+}
+
+function getListingClient(client: string, locale: Props['locale']) {
+  if (client.toLowerCase().includes('acad')) {
+    return locale === 'pt' ? 'Estudo selecionado' : 'Selected study'
+  }
+
+  return client
+}
+
+function getListingText(text: string, locale: Props['locale']) {
+  if (locale === 'pt') {
+    return text
+      .replace('Projeto académico', 'Estudo visual')
+      .replace('projeto académico', 'estudo visual')
+      .replace('Mesmo não concluído,', 'Enquanto estudo de conceito,')
+  }
+
+  return text
+    .replace('Academic project', 'Visual study')
+    .replace('academic project', 'visual study')
+    .replace('Although not completed,', 'As a concept study,')
+}
+
 export function ProjectsSection({ copy, locale, projects }: Props) {
   const [activeGroup, setActiveGroup] = useState<'all' | 'interior-architecture' | 'projectista'>('all')
+  const selectedProjects = selectedWorkSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project): project is CMSPortfolioProject => Boolean(project))
   const groups = [
     {
       key: 'interior-architecture',
@@ -113,7 +188,7 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
 
           <div className="space-y-14">
             {visibleGroups.map((group) => {
-              const groupedProjects = projects.filter((project) => project.disciplineKey === group.key)
+              const groupedProjects = selectedProjects.filter((project) => project.disciplineKey === group.key)
 
               if (!groupedProjects.length) {
                 return null
@@ -136,80 +211,84 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
                   </div>
 
                   <div className="divide-y divide-black/10 border-y border-black/10">
-                    {groupedProjects.map((project, index) => (
-                      <article
-                        key={project.slug}
-                        className="group py-8"
-                      >
-                        <Link
-                          className="grid gap-8 rounded-[1.4rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black/20 lg:grid-cols-[9rem_minmax(0,1fr)_minmax(14rem,20rem)] lg:items-start"
-                          href={`/${locale}/projects/${project.slug}`}
+                    {groupedProjects.map((project, index) => {
+                      const listingStatus = getListingStatus(project, locale)
+
+                      return (
+                        <article
+                          key={project.slug}
+                          className="group py-8"
                         >
-                          <div className="space-y-2">
-                            <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/54">
-                              0{index + 1}
-                            </p>
-                            <p className="text-sm leading-[1.6] text-black/74">{project.year}</p>
-                            <p className="text-sm leading-[1.6] text-black/74">{project.category}</p>
-                            <p className="text-sm leading-[1.6] text-black/74">{project.discipline}</p>
-                            {project.status ? (
-                              <p className="text-sm leading-[1.6] text-black/74">{project.status}</p>
-                            ) : null}
-                            <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-black/54">
-                              {project.location}
-                            </p>
-                          </div>
+                          <Link
+                            className="grid gap-8 rounded-[1.4rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black/20 lg:grid-cols-[9rem_minmax(0,1fr)_minmax(14rem,20rem)] lg:items-start"
+                            href={`/${locale}/projects/${project.slug}`}
+                          >
+                            <div className="space-y-2">
+                              <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/54">
+                                0{index + 1}
+                              </p>
+                              <p className="text-sm leading-[1.6] text-black/74">{project.year}</p>
+                              <p className="text-sm leading-[1.6] text-black/74">{getListingCategory(project, locale)}</p>
+                              <p className="text-sm leading-[1.6] text-black/74">{project.discipline}</p>
+                              {listingStatus ? (
+                                <p className="text-sm leading-[1.6] text-black/74">{listingStatus}</p>
+                              ) : null}
+                              <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-black/54">
+                                {project.location}
+                              </p>
+                            </div>
 
-                          <div className="space-y-5">
                             <div className="space-y-5">
-                              <h3 className="text-serif text-[2.15rem] leading-[0.98] tracking-[-0.05em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.2rem] lg:text-[4.15rem]">
-                                {project.title}
-                              </h3>
-                              <p className="measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82">
-                                {project.summary}
-                              </p>
-                              <p className="max-w-[28rem] font-mono text-[0.68rem] uppercase tracking-[0.16em] text-black/58">
-                                {project.impact}
-                              </p>
-                            </div>
-
-                            <div className="flex flex-wrap gap-2">
-                              {project.highlights.map((highlight) => (
-                                <Tag key={highlight}>{highlight}</Tag>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col justify-between gap-5 lg:border-l lg:border-black/10 lg:pl-8">
-                            {project.images?.[0]?.url ? (
-                              <div className="overflow-hidden rounded-[1.3rem] bg-black/4">
-                                <Image
-                                  alt={project.images[0].alt}
-                                  className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                                  height={1200}
-                                  loading="lazy"
-                                  sizes="(max-width: 1024px) 100vw, 320px"
-                                  src={project.images[0].url}
-                                  width={960}
-                                />
+                              <div className="space-y-5">
+                                <h3 className="text-serif text-[2.15rem] leading-[0.98] tracking-[-0.05em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.2rem] lg:text-[4.15rem]">
+                                  {project.title}
+                                </h3>
+                                <p className="measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82">
+                                  {getListingText(project.summary, locale)}
+                                </p>
+                                <p className="max-w-[28rem] font-mono text-[0.68rem] uppercase tracking-[0.16em] text-black/58">
+                                  {getListingText(project.impact, locale)}
+                                </p>
                               </div>
-                            ) : (
-                              <div className={`aspect-[4/5] rounded-[1.3rem] bg-gradient-to-br ${project.accent}`} />
-                            )}
 
-                            <div className="flex items-end justify-between border-t border-black/10 pt-4">
-                              <div className="space-y-1 text-sm text-black/78">
-                                <p>{project.area}</p>
-                                <p>{project.client}</p>
+                              <div className="flex flex-wrap gap-2">
+                                {project.highlights.map((highlight) => (
+                                  <Tag key={highlight}>{getListingHighlight(highlight, locale)}</Tag>
+                                ))}
                               </div>
-                              <span className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/60">
-                                {copy.cta}
-                              </span>
                             </div>
-                          </div>
-                        </Link>
-                      </article>
-                    ))}
+
+                            <div className="flex flex-col justify-between gap-5 lg:border-l lg:border-black/10 lg:pl-8">
+                              {project.images?.[0]?.url ? (
+                                <div className="overflow-hidden rounded-[1.3rem] bg-black/4">
+                                  <Image
+                                    alt={project.images[0].alt}
+                                    className="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:aspect-[4/5]"
+                                    height={1200}
+                                    loading="lazy"
+                                    sizes="(max-width: 1024px) 100vw, 320px"
+                                    src={project.images[0].url}
+                                    width={960}
+                                  />
+                                </div>
+                              ) : (
+                                <div className={`aspect-[3/2] rounded-[1.3rem] bg-gradient-to-br md:aspect-[4/5] ${project.accent}`} />
+                              )}
+
+                              <div className="flex items-end justify-between border-t border-black/10 pt-4">
+                                <div className="space-y-1 text-sm text-black/78">
+                                  <p>{project.area}</p>
+                                  <p>{getListingClient(project.client, locale)}</p>
+                                </div>
+                                <span className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/60">
+                                  {copy.cta}
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        </article>
+                      )
+                    })}
                   </div>
                 </section>
               )

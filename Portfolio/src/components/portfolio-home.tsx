@@ -12,7 +12,6 @@ import { Header } from '@/components/layout/Header'
 import { AboutSection } from '@/components/sections/About'
 import { ContactSection } from '@/components/sections/Contact'
 import { Hero } from '@/components/sections/Hero'
-import { ProcessSection } from '@/components/sections/Process'
 import { ProjectsSection } from '@/components/sections/Projects'
 import { ServicesSection } from '@/components/sections/Services'
 
@@ -27,10 +26,9 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
 
   const navItems = useMemo(
     () => [
-      { href: `/${locale}#about`, label: copy.nav.about },
       { href: `/${locale}#projects`, label: copy.nav.projects },
+      { href: `/${locale}#about`, label: copy.nav.about },
       { href: `/${locale}#services`, label: copy.nav.services },
-      { href: `/${locale}#process`, label: copy.nav.process },
       { href: `/${locale}#contact`, label: copy.nav.contact },
     ],
     [copy.nav, locale],
@@ -63,7 +61,7 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
               opacity: 1,
               y: 0,
             }}
-            className="pt-10 sm:pt-14 lg:pt-16"
+            className="pt-6 sm:pt-14 lg:pt-16"
             initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             transition={{
               duration: reduceMotion ? 0 : motionTokens.duration.slow,
@@ -71,17 +69,16 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
               delay: reduceMotion ? 0 : 0.14,
             }}
           >
-            <AboutSection
-              copy={copy.about}
-              introCard={copy.introCard}
-            />
             <ProjectsSection
               copy={copy.projects}
               locale={locale}
               projects={projects}
             />
+            <AboutSection
+              copy={copy.about}
+              introCard={copy.introCard}
+            />
             <ServicesSection copy={copy.services} />
-            <ProcessSection copy={copy.process} />
             <ContactSection copy={copy.contact} />
           </motion.div>
         </div>

@@ -150,13 +150,13 @@ export function Hero({ copy, locale }: Props) {
     <section
       ref={rootRef}
       aria-labelledby="hero-title"
-      className="relative min-h-screen overflow-hidden bg-[var(--color-background)]"
+      className="relative overflow-hidden bg-[var(--color-background)] lg:min-h-screen"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_14%,rgba(17,17,17,0.05),transparent_22%),radial-gradient(circle_at_84%_16%,rgba(17,17,17,0.028),transparent_18%)]" />
 
       <motion.div
         animate={reduceMotion ? undefined : 'visible'}
-        className="relative mx-auto flex min-h-screen w-full max-w-[94rem] flex-col justify-between px-4 pb-8 pt-6 sm:px-6 sm:pb-10 sm:pt-8 lg:px-10 lg:pb-12 lg:pt-10"
+        className="relative mx-auto flex w-full max-w-[94rem] flex-col justify-between px-4 pb-8 pt-6 sm:px-6 sm:pb-10 sm:pt-8 lg:min-h-screen lg:px-10 lg:pb-12 lg:pt-10"
         initial={reduceMotion ? false : 'hidden'}
         variants={containerStagger}
       >
@@ -214,7 +214,7 @@ export function Hero({ copy, locale }: Props) {
           </motion.div>
         </div>
 
-        <div className="grid flex-1 gap-10 py-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(15rem,24rem)] lg:items-end lg:py-12">
+        <div className="grid gap-10 py-10 lg:flex-1 lg:grid-cols-[minmax(0,1.45fr)_minmax(15rem,24rem)] lg:items-end lg:py-12">
           <motion.div
             className="self-center"
             style={reduceMotion ? undefined : { y: nameY }}

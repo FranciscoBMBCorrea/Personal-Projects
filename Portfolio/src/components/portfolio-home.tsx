@@ -45,17 +45,15 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
   const alternateLocale = locale === 'pt' ? 'en' : 'pt'
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden bg-[#fbfbf8] text-stone-950">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-12rem] top-[-2rem] h-96 w-96 rounded-full bg-[#f8efb3]/70 blur-3xl" />
-        <div className="absolute right-[-8rem] top-36 h-[30rem] w-[30rem] rounded-full bg-[#ecd777]/50 blur-3xl" />
-        <div className="absolute bottom-24 left-1/3 h-80 w-80 rounded-full bg-[#fff1ba]/50 blur-3xl" />
+        <div className="absolute inset-0 bg-[#fbfbf8]" />
       </div>
 
-      <section ref={heroRef} className="relative z-10 min-h-[240vh]">
+      <section ref={heroRef} className="relative z-10 min-h-[100svh]">
         <motion.div
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale, filter: heroBlur }}
-          className="sticky top-0 flex min-h-screen items-end overflow-hidden px-4 pb-10 pt-10 sm:px-6 lg:px-10 lg:pb-14 lg:pt-16"
+          className="flex min-h-[100svh] items-center overflow-hidden px-4 py-8 sm:px-6 lg:px-10 lg:py-12"
         >
           <div className="grain-layer grain-layer-light" aria-hidden="true" />
           <motion.div
@@ -89,7 +87,7 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9, ease: 'easeOut', delay: 0.04 }}
                     style={{ letterSpacing: titleSpacing }}
-                    className="text-display text-[5rem] text-stone-950 sm:text-[8rem] lg:text-[12rem] xl:text-[15rem]"
+                    className="text-display text-[clamp(4rem,16vw,11rem)] text-stone-950"
                   >
                     {firstName}
                   </motion.h1>
@@ -98,7 +96,7 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.94, ease: 'easeOut', delay: 0.1 }}
                     style={{ letterSpacing: titleSpacing }}
-                    className="text-display text-accent text-[5rem] sm:text-[8rem] lg:text-[12rem] xl:text-[15rem]"
+                    className="text-display text-accent text-[clamp(4rem,16vw,11rem)]"
                   >
                     {lastName}
                   </motion.h1>
@@ -112,7 +110,7 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
                   className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,23rem)] lg:items-end"
                 >
                   <div className="space-y-6">
-                    <p className="text-condensed max-w-5xl text-[2.2rem] leading-[0.9] text-stone-900 sm:text-[3.2rem] lg:text-[5.4rem]">
+                    <p className="text-condensed max-w-3xl text-2xl leading-[1.05] text-stone-900 sm:text-3xl lg:text-5xl">
                       {copy.role}
                     </p>
                     <p className="max-w-2xl text-base leading-8 text-stone-700 sm:text-lg">

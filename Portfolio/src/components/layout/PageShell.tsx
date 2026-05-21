@@ -27,7 +27,6 @@ export function PageShell({ children, copy, locale, navItems }: Props) {
           locale={locale}
           name={copy.name}
           navItems={navItems}
-          role={copy.role}
         />
         <div className={`${layoutTokens.page} pb-16 pt-8 sm:pt-10 lg:pb-20`}>
           {children}

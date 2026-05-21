@@ -16,9 +16,9 @@ export const motionTokens = {
   },
   easing: [0.22, 1, 0.36, 1] as const,
   sectionOffset: 26,
-  heroUnlockStep: 0.1,
-  heroWheelFactor: 0.001,
-  heroTouchFactor: 0.0014,
+  heroUnlockStep: 0.18,
+  heroWheelFactor: 0.00185,
+  heroTouchFactor: 0.0022,
 } as const
 
 export const typographyTokens = {

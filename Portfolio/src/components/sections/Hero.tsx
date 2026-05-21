@@ -1,244 +1,302 @@
 'use client'
 
 import Link from 'next/link'
-import { motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from 'motion/react'
+import { useRef } from 'react'
 
 import type { PortfolioCopy } from '@/data/portfolio'
 import { motionTokens } from '@/lib/constants'
-import { clamp } from '@/lib/utils'
 
 type Props = {
   copy: PortfolioCopy
   locale: 'pt' | 'en'
-  onComplete: () => void
 }
 
-export function Hero({ copy, locale, onComplete }: Props) {
+const containerStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+}
+
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.62,
+      ease: motionTokens.easing,
+    },
+  },
+}
+
+const lineDraw: Variants = {
+  hidden: {
+    opacity: 0,
+    scaleX: 0,
+  },
+  visible: {
+    opacity: 1,
+    scaleX: 1,
+    transition: {
+      duration: 0.7,
+      ease: motionTokens.easing,
+    },
+  },
+}
+
+function lineReveal(offsetX = 0): Variants {
+  return {
+    hidden: {
+      opacity: 0,
+      y: '108%',
+      x: offsetX,
+      clipPath: 'inset(0 0 100% 0)',
+    },
+    visible: {
+      opacity: 1,
+      y: '0%',
+      x: 0,
+      clipPath: 'inset(0 0 0% 0)',
+      transition: {
+        duration: 0.82,
+        ease: motionTokens.easing,
+      },
+    },
+  }
+}
+
+function verticalLineDraw(offsetY = 0): Variants {
+  return {
+    hidden: {
+      opacity: 0,
+      scaleY: 0,
+      y: offsetY,
+    },
+    visible: {
+      opacity: 1,
+      scaleY: 1,
+      y: 0,
+      transition: {
+        duration: 0.72,
+        ease: motionTokens.easing,
+      },
+    },
+  }
+}
+
+const nameOffsets = [
+  '',
+  'pl-[8vw] sm:pl-[10vw] lg:pl-[12vw]',
+  'pl-[18vw] sm:pl-[20vw] lg:pl-[25vw]',
+] as const
+
+export function Hero({ copy, locale }: Props) {
   const reduceMotion = useReducedMotion()
-  const [isComplete, setIsComplete] = useState(false)
-  const progressRef = useRef(0)
-  const touchStartRef = useRef<number | null>(null)
-  const progress = useMotionValue(reduceMotion ? 1 : 0)
-  const [firstName, ...restName] = copy.name.split(' ')
-  const lastName = restName.join(' ')
-  const alternateLocale = locale === 'pt' ? 'en' : 'pt'
-  const heroLabels =
+  const rootRef = useRef<HTMLElement | null>(null)
+  const { scrollYProgress } = useScroll({
+    target: rootRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const nameY = useTransform(scrollYProgress, [0, 1], [0, -42])
+  const phraseY = useTransform(scrollYProgress, [0, 1], [0, -16])
+  const metaOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.74, 0.42])
+
+  const content =
     locale === 'pt'
       ? {
-          scrollPrompt: 'Scroll para entrar',
-          enterLabel: 'Entrar no portfolio',
+          statement: 'Clareza espacial, desenhada com contenção.',
+          metadata: 'Interiores · Mobiliário à medida · 2D · 3D',
+          projects: 'Projetos',
+          about: 'Sobre',
+          contact: 'Contacto',
+          scroll: 'Scroll',
         }
       : {
-          scrollPrompt: 'Scroll to enter',
-          enterLabel: 'Enter portfolio',
+          statement: 'Spatial clarity, drawn with restraint.',
+          metadata: 'Interiors · Custom furniture · 2D · 3D',
+          projects: 'Projects',
+          about: 'About',
+          contact: 'Contact',
+          scroll: 'Scroll',
         }
 
-  const titleY = useTransform(progress, [0, 1], [0, -92])
-  const titleOpacity = useTransform(progress, [0, 0.88, 1], [1, 0.42, 0])
-  const titleScale = useTransform(progress, [0, 1], [1, 0.985])
-  const descriptionY = useTransform(progress, [0, 1], [0, 46])
-  const descriptionOpacity = useTransform(progress, [0, 0.72, 1], [1, 0.18, 0])
-  const veilY = useTransform(progress, [0, 1], ['110%', '0%'])
-  const veilOpacity = useTransform(progress, [0, 0.35, 1], [0, 0.3, 1])
-  const shellOpacity = useTransform(progress, [0, 0.96, 1], [1, 1, 0])
-  const progressWidth = useTransform(progress, [0, 1], ['32%', '6%'])
-
-  useEffect(() => {
-    const previousBodyOverflow = document.body.style.overflow
-    const previousHtmlOverflow = document.documentElement.style.overflow
-
-    document.body.style.overflow = 'hidden'
-    document.documentElement.style.overflow = 'hidden'
-
-    const updateProgress = (delta: number) => {
-      if (isComplete) {
-        return
-      }
-
-      const nextValue = clamp(progressRef.current + delta, 0, 1)
-      progressRef.current = nextValue
-      progress.set(nextValue)
-
-      if (nextValue >= 1) {
-        document.body.style.overflow = previousBodyOverflow
-        document.documentElement.style.overflow = previousHtmlOverflow
-        setIsComplete(true)
-        onComplete()
-      }
-    }
-
-    const onWheel = (event: WheelEvent) => {
-      if (isComplete) {
-        return
-      }
-
-      if (event.deltaY <= 0) {
-        event.preventDefault()
-        return
-      }
-
-      event.preventDefault()
-      updateProgress(Math.min(event.deltaY * motionTokens.heroWheelFactor, motionTokens.heroUnlockStep))
-    }
-
-    const onTouchStart = (event: TouchEvent) => {
-      touchStartRef.current = event.touches[0]?.clientY ?? null
-    }
-
-    const onTouchMove = (event: TouchEvent) => {
-      if (isComplete) {
-        return
-      }
-
-      const currentY = event.touches[0]?.clientY
-
-      if (touchStartRef.current === null || typeof currentY !== 'number') {
-        return
-      }
-
-      const delta = touchStartRef.current - currentY
-
-      if (delta <= 0) {
-        event.preventDefault()
-        return
-      }
-
-      event.preventDefault()
-      updateProgress(Math.min(delta * motionTokens.heroTouchFactor, motionTokens.heroUnlockStep))
-      touchStartRef.current = currentY
-    }
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (isComplete) {
-        return
-      }
-
-      if (!['ArrowDown', 'PageDown', 'Space', 'Enter'].includes(event.code)) {
-        return
-      }
-
-      event.preventDefault()
-      updateProgress(motionTokens.heroUnlockStep)
-    }
-
-    window.addEventListener('wheel', onWheel, { passive: false })
-    window.addEventListener('touchstart', onTouchStart, { passive: false })
-    window.addEventListener('touchmove', onTouchMove, { passive: false })
-    window.addEventListener('keydown', onKeyDown)
-
-    return () => {
-      window.removeEventListener('wheel', onWheel)
-      window.removeEventListener('touchstart', onTouchStart)
-      window.removeEventListener('touchmove', onTouchMove)
-      window.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previousBodyOverflow
-      document.documentElement.style.overflow = previousHtmlOverflow
-    }
-  }, [isComplete, onComplete, progress, reduceMotion])
+  const [firstName = 'FRANCISCO', secondName = 'BEÇA', ...restName] = copy.name
+    .toUpperCase()
+    .split(' ')
+  const thirdName = restName.join(' ') || 'MÚRIAS'
+  const alternateLocale = locale === 'pt' ? 'en' : 'pt'
+  const navLinks = [
+    { href: `/${locale}#projects`, label: content.projects },
+    { href: `/${locale}#about`, label: content.about },
+    { href: `/${locale}#contact`, label: content.contact },
+  ]
 
   return (
-    <motion.section
-      aria-label="Introduction"
-      className="fixed inset-0 z-30 overflow-hidden bg-[var(--color-background)]"
-      style={{
-        opacity: shellOpacity,
-        pointerEvents: isComplete ? 'none' : 'auto',
-      }}
+    <section
+      ref={rootRef}
+      aria-labelledby="hero-title"
+      className="relative min-h-screen overflow-hidden bg-[var(--color-background)]"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_16%,rgba(0,0,0,0.06),transparent_28%),radial-gradient(circle_at_88%_18%,rgba(0,0,0,0.045),transparent_24%)]" />
-      <motion.div
-        className="absolute inset-x-[-4%] bottom-0 top-[-10%] bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.82)_42%,rgba(236,236,232,1)_100%)]"
-        style={{ opacity: veilOpacity, y: veilY }}
-      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_14%,rgba(17,17,17,0.05),transparent_22%),radial-gradient(circle_at_84%_16%,rgba(17,17,17,0.028),transparent_18%)]" />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-[94rem] flex-col justify-between gap-12 px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 lg:px-10 lg:pb-14 lg:pt-12">
-        <div className="flex items-start justify-between gap-6">
-          <p
-            className={`font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/56 sm:text-[0.72rem] ${
-              locale === 'pt' ? 'max-w-[15rem] sm:max-w-[19rem]' : 'max-w-[18rem]'
-            }`}
-          >
-            {copy.hero.eyebrow}
-          </p>
-          <Link
-            className="inline-flex min-h-11 items-center rounded-full px-3 py-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/74 transition hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
-            href={`/${alternateLocale}`}
-          >
-            {copy.switchLanguageLabel}
-          </Link>
+      <motion.div
+        animate={reduceMotion ? undefined : 'visible'}
+        className="relative mx-auto flex min-h-screen w-full max-w-[94rem] flex-col justify-between px-4 pb-8 pt-6 sm:px-6 sm:pb-10 sm:pt-8 lg:px-10 lg:pb-12 lg:pt-10"
+        initial={reduceMotion ? false : 'hidden'}
+        variants={containerStagger}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-4 top-[18vh] hidden h-[56vh] sm:inset-x-6 lg:inset-x-10 md:block"
+        >
+          <motion.span
+            className="absolute left-[7%] top-0 h-full w-px origin-top bg-black/10"
+            variants={verticalLineDraw(-8)}
+          />
+          <motion.span
+            className="absolute left-[36%] top-[6%] h-[88%] w-px origin-top bg-black/8"
+            variants={verticalLineDraw(10)}
+          />
+          <motion.span
+            className="absolute right-[12%] top-[14%] h-[62%] w-px origin-top bg-black/8"
+            variants={verticalLineDraw(16)}
+          />
+          <motion.span
+            className="absolute left-[7%] top-[20%] block h-px w-[38%] origin-left bg-black/10"
+            variants={lineDraw}
+          />
+          <motion.span
+            className="absolute left-[36%] top-[54%] block h-px w-[50%] origin-left bg-black/8"
+            variants={lineDraw}
+          />
         </div>
 
-        <div className="space-y-8 sm:space-y-12 lg:space-y-14">
-          <motion.div
-            className="space-y-1 sm:space-y-2"
-            style={{ opacity: titleOpacity, scale: titleScale, y: titleY }}
-          >
-            <h1 className="space-y-1 sm:space-y-2">
-              <span className="text-display block text-[var(--font-size-h1)] text-black">
-                {firstName}
-              </span>
-              <span className="text-display ml-[6vw] block text-[var(--font-size-h1)] text-black sm:ml-[8vw] lg:ml-[10vw]">
-                {lastName}
-              </span>
-              <span
-                className={`mt-5 block text-[clamp(1rem,0.9rem+0.35vw,1.28rem)] font-medium leading-[1.12] tracking-[-0.03em] text-black/72 ${
-                  locale === 'pt' ? 'max-w-[21ch]' : 'max-w-[17ch]'
-                }`}
+        <div className="grid gap-8">
+          <div className="flex items-start justify-between gap-6">
+            <motion.p
+              className="max-w-[15rem] font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/46 sm:max-w-[22rem] sm:text-[0.72rem]"
+              style={reduceMotion ? undefined : { opacity: metaOpacity }}
+              variants={fadeUp}
+            >
+              {content.metadata}
+            </motion.p>
+
+            <motion.div variants={fadeUp}>
+              <Link
+                className="inline-flex min-h-11 items-center rounded-full px-2 py-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/56 transition duration-200 hover:translate-x-[2px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                href={`/${alternateLocale}`}
               >
-                {copy.role}
-              </span>
+                {copy.switchLanguageLabel}
+              </Link>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="origin-left"
+            variants={lineDraw}
+          >
+            <span className="block h-px w-full bg-black/10" />
+          </motion.div>
+        </div>
+
+        <div className="grid flex-1 gap-10 py-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(15rem,24rem)] lg:items-end lg:py-12">
+          <motion.div
+            className="self-center"
+            style={reduceMotion ? undefined : { y: nameY }}
+          >
+            <h1
+              className="space-y-1 sm:space-y-2"
+              id="hero-title"
+            >
+              {[firstName, secondName, thirdName].map((line, index) => (
+                <span
+                  key={line}
+                  className={`block overflow-hidden ${nameOffsets[index] ?? nameOffsets[2]}`}
+                >
+                  <motion.span
+                    className="text-display block text-[clamp(4rem,18vw,12.8rem)] leading-[0.86] tracking-[-0.085em] text-black"
+                    variants={lineReveal(index === 2 ? 18 : 0)}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
             </h1>
           </motion.div>
 
-          <motion.div
-            className="grid gap-7 border-t border-black/10 pt-5 sm:pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,22rem)] lg:items-end"
-            style={{ opacity: descriptionOpacity, y: descriptionY }}
-          >
+          <div className="flex flex-col gap-8 lg:items-start lg:pb-5">
             <div className="space-y-5">
-              <p
-                className={`text-serif text-[clamp(1.95rem,4vw,3.7rem)] font-medium leading-[1] tracking-[-0.04em] text-black ${
-                  locale === 'pt' ? 'max-w-[14ch]' : 'max-w-[12ch]'
-                }`}
-              >
-                {copy.hero.title}
-              </p>
-              <p
-                className={`measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82 ${
-                  locale === 'pt' ? 'max-w-[24rem]' : 'max-w-[22rem]'
-                }`}
-              >
-                {copy.hero.description}
-              </p>
-            </div>
-
-            <div className="space-y-4 lg:text-right">
-              <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/52">
-                {heroLabels.scrollPrompt}
-              </p>
-              <p className={`text-[0.95rem] leading-[1.68] tracking-[-0.01em] text-black/72 lg:ml-auto ${locale === 'pt' ? 'max-w-[18rem]' : 'max-w-[16rem]'}`}>
-                {copy.hero.note}
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center gap-3 sm:gap-4"
-            style={{ opacity: descriptionOpacity }}
-          >
-            <span className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/56">
-              Scroll
-            </span>
-            <div className="relative h-px w-full max-w-[13rem] bg-black/8 sm:max-w-[17rem]">
               <motion.div
-                className="absolute inset-y-0 left-0 bg-black/60"
-                style={{ width: progressWidth }}
-              />
+                className="origin-left"
+                variants={lineDraw}
+              >
+                <span className="block h-px w-28 bg-black/18 sm:w-36 lg:w-44" />
+              </motion.div>
+
+              <div className="overflow-hidden">
+                <motion.p
+                  className="text-serif max-w-[14ch] text-[clamp(1.85rem,4vw,3.75rem)] leading-[0.98] tracking-[-0.04em] text-black text-balance"
+                  style={reduceMotion ? undefined : { y: phraseY }}
+                  variants={fadeUp}
+                >
+                  {content.statement}
+                </motion.p>
+              </div>
             </div>
-            <span className="font-mono text-[0.82rem] text-black/72 sm:text-sm">{heroLabels.enterLabel}</span>
-          </motion.div>
+
+            <motion.nav
+              aria-label={locale === 'pt' ? 'Navegação da capa' : 'Hero navigation'}
+              className="flex flex-wrap gap-x-4 gap-y-3"
+              variants={containerStagger}
+            >
+              {navLinks.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  variants={fadeUp}
+                >
+                  <Link
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full px-1 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-black/56 transition duration-200 hover:translate-x-[3px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                    href={item.href}
+                  >
+                    <span className="text-black/34">0{index + 1}</span>
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.nav>
+          </div>
         </div>
-      </div>
-    </motion.section>
+
+        <div className="grid gap-3">
+          <motion.div
+            className="origin-left"
+            variants={lineDraw}
+          >
+            <span className="block h-px w-20 bg-black/16 sm:w-28" />
+          </motion.div>
+          <motion.span
+            className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/44"
+            variants={fadeUp}
+          >
+            {content.scroll}
+          </motion.span>
+        </div>
+      </motion.div>
+    </section>
   )
 }

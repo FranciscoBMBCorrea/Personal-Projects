@@ -3,9 +3,11 @@ import Link from 'next/link'
 import { cn, isExternalHref } from '@/lib/utils'
 
 type Props = {
+  ariaLabel?: string
   children: React.ReactNode
   className?: string
   href: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>
   variant?: 'primary' | 'secondary' | 'ghost'
 }
 
@@ -18,7 +20,14 @@ const variantClasses = {
     'text-black/74 hover:text-black focus-visible:outline-black/20',
 } as const
 
-export function Button({ children, className, href, variant = 'primary' }: Props) {
+export function Button({
+  ariaLabel,
+  children,
+  className,
+  href,
+  onClick,
+  variant = 'primary',
+}: Props) {
   const classes = cn(
     'inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-medium tracking-[-0.02em] transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
     variantClasses[variant],
@@ -28,8 +37,10 @@ export function Button({ children, className, href, variant = 'primary' }: Props
   if (isExternalHref(href)) {
     return (
       <a
+        aria-label={ariaLabel}
         className={classes}
         href={href}
+        onClick={onClick}
         rel="noreferrer"
         target={href.startsWith('mailto:') ? undefined : '_blank'}
       >
@@ -40,8 +51,10 @@ export function Button({ children, className, href, variant = 'primary' }: Props
 
   return (
     <Link
+      aria-label={ariaLabel}
       className={classes}
       href={href}
+      onClick={onClick}
     >
       {children}
     </Link>

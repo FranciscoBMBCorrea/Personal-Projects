@@ -20,7 +20,6 @@ type Props = {
   locale: string
   name: string
   navItems: NavItem[]
-  role: string
 }
 
 export function Header({
@@ -29,7 +28,6 @@ export function Header({
   locale,
   name,
   navItems,
-  role,
 }: Props) {
   const pathname = usePathname()
   const reduceMotion = useReducedMotion()
@@ -52,26 +50,23 @@ export function Header({
     <div
       className={cn(
         layoutTokens.page,
-        'sticky top-0 z-40 pt-4',
+        'sticky top-0 z-40 pt-3 sm:pt-4',
       )}
     >
       <div
         className={cn(
-          'transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300',
+          'transition-[background-color,border-color,backdrop-filter] duration-300',
           shouldShowSurface
-            ? 'rounded-[1.5rem] border border-black/12 bg-white/92 shadow-[0_20px_50px_-38px_rgba(0,0,0,0.18)] backdrop-blur'
+            ? 'border-t border-black/10 bg-[rgba(255,253,248,0.88)] backdrop-blur'
             : 'border-transparent bg-transparent',
         )}
       >
-        <div className="flex items-center justify-between gap-4 px-0 py-2 sm:px-0">
+        <div className="flex items-center justify-between gap-4 px-0 py-2">
           <Link
             className="min-w-0 rounded-full px-1 py-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/25"
             href={`/${locale}`}
           >
-            <span className="block truncate text-[0.72rem] font-mono uppercase tracking-[0.22em] text-black/54">
-              {role}
-            </span>
-            <span className="block truncate text-base font-medium tracking-[-0.045em] text-black sm:text-lg">
+            <span className="block truncate text-[0.92rem] font-medium tracking-[-0.04em] text-black sm:text-[0.98rem]">
               {name}
             </span>
           </Link>
@@ -79,12 +74,12 @@ export function Header({
           <div className="hidden items-center gap-2 md:flex">
             <nav
               aria-label="Primary"
-              className="flex items-center gap-1"
+              className="flex items-center gap-3"
             >
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  className="inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm text-black/72 transition hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                  className="inline-flex min-h-11 items-center rounded-full px-1 py-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/56 transition hover:translate-x-[2px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
                   href={item.href}
                 >
                   {item.label}
@@ -92,7 +87,7 @@ export function Header({
               ))}
             </nav>
             <Link
-              className="inline-flex min-h-11 items-center rounded-full border border-black/12 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/74 transition hover:border-black/28 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+              className="inline-flex min-h-11 items-center rounded-full px-1 py-2 font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/46 transition hover:translate-x-[2px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
               href={nextLocalePath}
             >
               {alternateLocaleLabel}
@@ -103,11 +98,11 @@ export function Header({
             aria-controls="mobile-navigation"
             aria-expanded={isMenuOpen}
             aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-black/12 px-4 py-2 text-sm text-black/82 transition hover:border-black/28 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20 md:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 py-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/56 transition hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20 md:hidden"
             onClick={() => setIsMenuOpen((value) => !value)}
             type="button"
           >
-            Menu
+            Index
           </button>
         </div>
 
@@ -131,7 +126,7 @@ export function Header({
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
-                    className="inline-flex min-h-11 items-center rounded-xl px-4 py-3 text-base text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                    className="inline-flex min-h-11 items-center rounded-xl px-4 py-3 font-mono text-[0.74rem] uppercase tracking-[0.18em] text-black/72 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -139,7 +134,7 @@ export function Header({
                   </Link>
                 ))}
                 <Link
-                  className="mt-2 inline-flex min-h-11 items-center rounded-xl border border-black/10 px-4 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/78 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                  className="mt-2 inline-flex min-h-11 items-center rounded-xl px-4 py-3 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/62 transition hover:bg-black/[0.03] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
                   href={nextLocalePath}
                   onClick={() => setIsMenuOpen(false)}
                 >

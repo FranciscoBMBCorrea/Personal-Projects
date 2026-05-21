@@ -80,31 +80,32 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 border-y border-black/10 py-4">
+          <div className="-mx-1 flex flex-nowrap items-center gap-5 overflow-x-auto border-y border-black/10 px-1 py-4 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
             <button
               aria-pressed={activeGroup === 'all'}
-              className={`min-h-11 rounded-full px-4 text-sm transition ${
+              className={`min-h-11 shrink-0 px-0 py-2 font-mono text-[0.72rem] uppercase tracking-[0.18em] transition ${
                 activeGroup === 'all'
-                  ? 'bg-black text-white'
-                  : 'border border-black/12 text-black/74 hover:border-black/24 hover:text-black'
+                  ? 'text-black'
+                  : 'text-black/42 hover:text-black'
               }`}
               onClick={() => setActiveGroup('all')}
               type="button"
             >
-              {filterLabels.all}
+              00 / {filterLabels.all}
             </button>
             {groups.map((group) => (
               <button
                 aria-pressed={activeGroup === group.key}
                 key={group.key}
-                className={`min-h-11 rounded-full px-4 text-sm transition ${
+                className={`min-h-11 shrink-0 px-0 py-2 font-mono text-[0.72rem] uppercase tracking-[0.18em] transition ${
                   activeGroup === group.key
-                    ? 'bg-black text-white'
-                    : 'border border-black/12 text-black/74 hover:border-black/24 hover:text-black'
+                    ? 'text-black'
+                    : 'text-black/42 hover:text-black'
                 }`}
                 onClick={() => setActiveGroup(group.key)}
                 type="button"
               >
+                {group.key === 'interior-architecture' ? '01 / ' : '02 / '}
                 {group.label}
               </button>
             ))}
@@ -141,7 +142,7 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
                         className="group py-8"
                       >
                         <Link
-                          className="grid gap-8 lg:grid-cols-[9rem_minmax(0,1fr)_minmax(14rem,20rem)]"
+                          className="grid gap-8 rounded-[1.4rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black/20 lg:grid-cols-[9rem_minmax(0,1fr)_minmax(14rem,20rem)] lg:items-start"
                           href={`/${locale}/projects/${project.slug}`}
                         >
                           <div className="space-y-2">
@@ -160,8 +161,8 @@ export function ProjectsSection({ copy, locale, projects }: Props) {
                           </div>
 
                           <div className="space-y-5">
-                            <div className="space-y-4">
-                              <h3 className="text-serif text-[2.35rem] leading-[0.98] tracking-[-0.05em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.5rem] lg:text-[4.6rem]">
+                            <div className="space-y-5">
+                              <h3 className="text-serif text-[2.15rem] leading-[0.98] tracking-[-0.05em] text-black transition duration-300 group-hover:translate-x-1 sm:text-[3.2rem] lg:text-[4.15rem]">
                                 {project.title}
                               </h3>
                               <p className="measure-copy text-[var(--font-size-body)] leading-[var(--line-height-body)] tracking-[var(--tracking-body)] text-black/82">

@@ -19,11 +19,11 @@
       "switchLanguageLabel": "EN",
       "localeLabel": "pt_PT",
       "siteTitle": "Francisco Beça Múrias | Portfolio",
-      "siteDescription": "Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, móveis planejados, desenho 2D e visualização 3D.",
+      "siteDescription": "Portfolio pessoal de Francisco Beça Múrias com foco em design de interiores, mobiliário à medida, desenho 2D e visualização 3D.",
       "ogTitle": "Francisco Beça Múrias | Interior Design Portfolio",
-      "ogDescription": "Portfolio bilingue de design de interiores, móveis planejados, desenho 2D e visualização 3D com linguagem minimalista e elegante.",
+      "ogDescription": "Portfolio bilingue de design de interiores, mobiliário à medida, desenho 2D e visualização 3D com linguagem minimalista e elegante.",
       "name": "Francisco Beça Múrias",
-      "role": "Design de interiores · móveis planejados · 2D · 3D",
+      "role": "Design de interiores · mobiliário à medida · 2D · 3D",
       "nav": {
         "home": "Início",
         "about": "Sobre",
@@ -33,12 +33,12 @@
         "contact": "Contacto"
       },
       "hero": {
-        "eyebrow": "Design de interiores · móveis planejados · desenho 2D · visualização 3D",
-        "title": "Projetos espaciais apresentados com clareza, critério e direção visual.",
-        "description": "Designer de interiores com foco em leitura espacial, móveis planejados, desenho 2D e visualização 3D. O portfolio foi organizado para mostrar cada projeto de forma clara: contexto, decisão e resultado.",
+        "eyebrow": "Design de interiores · mobiliário à medida · desenho 2D · visualização 3D",
+        "title": "Francisco Beça Múrias. Design de interiores, desenho 2D, visualização 3D e soluções à medida.",
+        "description": "Desenho espaços com atenção à leitura, à proporção e à forma como cada decisão se traduz em uso, ambiente e detalhe. Este portfolio foi pensado para mostrar os projetos com clareza: contexto, critério e resultado.",
         "primaryCta": "Ver projetos",
         "secondaryCta": "Contactar",
-        "note": "Disponível para projetos residenciais, cultura, retail e colaboração com estúdios."
+        "note": "Disponível para projetos residenciais, comerciais e colaboração com estúdios."
       },
       "introCard": {
         "title": "Como ler",
@@ -52,27 +52,27 @@
         "label": "Prática",
         "title": "Um portfolio pensado para ser lido com a mesma clareza com que um projeto deve ser apresentado.",
         "paragraphs": [
-          "O foco está em organizar informação espacial de forma legível: o que o projeto é, o que procura resolver e como essa resposta ganha forma.",
-          "Entre interiores, desenho técnico e visualização, o objetivo é reduzir ruído e tornar cada decisão mais fácil de compreender."
+          "Interessa-me organizar a informação espacial de forma legível: perceber o que o projeto pede, o que precisa de ser resolvido e como essa resposta ganha forma.",
+          "Entre interiores, desenho técnico, mobiliário à medida e visualização, procuro reduzir ruído e dar mais nitidez a cada decisão."
         ]
       },
       "projects": {
         "label": "Projetos",
-        "title": "Quatro projetos apresentados como estudos espaciais, cada um com contexto, questão central e resposta.",
-        "description": "Todos seguem a mesma lógica de leitura para facilitar comparação: contexto, síntese, desenvolvimento, material apresentado e sequência visual.",
+        "title": "Projetos organizados por área de atuação, com contexto claro, decisão espacial e leitura consistente.",
+        "description": "A seleção cruza arquitetura de interiores e trabalho de projectista, sempre com a mesma lógica de leitura: contexto, síntese, desenvolvimento e material apresentado.",
         "cta": "Abrir projeto"
       },
       "services": {
         "label": "O que faço",
-        "title": "Três áreas de trabalho, explicadas de forma direta.",
-        "description": "A estrutura é simples: conceber o espaço, desenhá-lo com precisão e comunicá-lo com imagens claras.",
+        "title": "Áreas de trabalho explicadas de forma direta, sem ruído.",
+        "description": "A estrutura é simples: pensar o espaço, desenhá-lo com rigor e comunicá-lo com imagens claras.",
         "items": [
           {
-            "title": "Interior design",
+            "title": "Design de interiores",
             "text": "Organização do espaço, linguagem do projeto e construção de atmosfera para contextos residenciais ou comerciais."
           },
           {
-            "title": "Móveis planejados",
+            "title": "Mobiliário à medida",
             "text": "Desenho de soluções à medida para marcenaria, arrumação e integração funcional com o espaço."
           },
           {
@@ -109,15 +109,15 @@
       },
       "contact": {
         "label": "Contacto",
-        "title": "Disponível para projetos de interiores, desenho e visualização.",
-        "description": "Para novos projetos, apoio a estúdios ou desenvolvimento de apresentações espaciais mais claras e consistentes.",
-        "primaryCta": "Pedir proposta",
+        "title": "Disponível para projetos de interiores, desenho técnico, mobiliário à medida e visualização.",
+        "description": "Para novos projetos, apoio a estúdios ou desenvolvimento de apresentações espaciais mais claras, consistentes e bem estruturadas.",
+        "primaryCta": "Enviar email",
         "secondaryCta": "Falar no WhatsApp"
       },
       "aboutPage": {
         "label": "Sobre",
         "title": "Uma prática que junta clareza espacial, detalhe técnico e sensibilidade visual.",
-        "intro": "Francisco Beça Múrias trabalha entre design de interiores, móveis planejados, desenho 2D e visualização 3D, com interesse particular por espaços que conciliam contenção formal e experiência sensorial.",
+        "intro": "Francisco Beça Múrias trabalha entre design de interiores, mobiliário à medida, desenho 2D e visualização 3D, com interesse particular por espaços que conciliam contenção formal, uso e experiência sensorial.",
         "body": [
           "O portfolio foi pensado para comunicar não apenas o resultado final, mas também o raciocínio por trás de cada ambiente: leitura do espaço, fluxo, materialidade e composição.",
           "A apresentação privilegia um tom editorial, mais próximo de um caderno de estúdio do que de um site promocional genérico, ajudando a posicionar o trabalho de forma mais autoral."
@@ -147,7 +147,7 @@
           }
         ]
       },
-      "footer": "Portfolio de design de interiores e visualização 2D/3D."
+      "footer": "Portfolio de design de interiores, mobiliário à medida e visualização 2D/3D."
     },
     "en": {
       "languageLabel": "EN",

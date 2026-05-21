@@ -19,7 +19,6 @@ export function SiteHeader({ copy, locale }: Props) {
         { href: `/${locale}/services`, label: copy.nav.services },
         { href: `/${locale}#contact`, label: copy.nav.contact },
       ]}
-      role={copy.role}
     />
   )
 }

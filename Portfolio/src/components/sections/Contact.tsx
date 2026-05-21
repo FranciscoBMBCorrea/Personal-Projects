@@ -10,6 +10,8 @@ type Props = {
 }
 
 export function ContactSection({ copy }: Props) {
+  const openLabel = copy.label === 'Contacto' ? 'Abrir' : 'Open'
+
   return (
     <AnimatedSection
       className="border-t border-black/10 py-12 sm:py-16 lg:py-20"
@@ -56,7 +58,7 @@ export function ContactSection({ copy }: Props) {
                   {contact.label}
                 </span>
                 <span className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/60 transition duration-200 group-hover:translate-x-1 group-hover:text-black">
-                  Open
+                  {openLabel}
                 </span>
               </a>
             ))}

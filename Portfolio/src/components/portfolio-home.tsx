@@ -50,13 +50,13 @@ export function PortfolioHome({ locale, copy, projects }: Props) {
             locale={locale}
           />
 
-        <Header
-          alternateLocaleLabel={copy.switchLanguageLabel}
-          introComplete
-          locale={locale}
-          name={copy.name}
-          navItems={navItems}
-        />
+          <Header
+            alternateLocaleLabel={copy.switchLanguageLabel}
+            introComplete
+            locale={locale}
+            name={copy.name}
+            navItems={navItems}
+          />
 
           <motion.div
             animate={{

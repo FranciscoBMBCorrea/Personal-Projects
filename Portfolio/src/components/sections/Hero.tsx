@@ -79,29 +79,10 @@ function lineReveal(offsetX = 0): Variants {
   }
 }
 
-function verticalLineDraw(offsetY = 0): Variants {
-  return {
-    hidden: {
-      opacity: 0,
-      scaleY: 0,
-      y: offsetY,
-    },
-    visible: {
-      opacity: 1,
-      scaleY: 1,
-      y: 0,
-      transition: {
-        duration: 0.72,
-        ease: motionTokens.easing,
-      },
-    },
-  }
-}
-
 const nameOffsets = [
   '',
-  'pl-[8vw] sm:pl-[10vw] lg:pl-[12vw]',
-  'pl-[18vw] sm:pl-[20vw] lg:pl-[25vw]',
+  'pl-[4vw] sm:pl-[8vw] lg:pl-[10vw]',
+  'pl-[10vw] sm:pl-[16vw] lg:pl-[18vw]',
 ] as const
 
 export function Hero({ copy, locale }: Props) {
@@ -124,7 +105,6 @@ export function Hero({ copy, locale }: Props) {
           projects: 'Projetos',
           about: 'Sobre',
           contact: 'Contacto',
-          scroll: 'Scroll',
         }
       : {
           statement: 'Spatial clarity, drawn with restraint.',
@@ -132,7 +112,6 @@ export function Hero({ copy, locale }: Props) {
           projects: 'Projects',
           about: 'About',
           contact: 'Contact',
-          scroll: 'Scroll',
         }
 
   const [firstName = 'FRANCISCO', secondName = 'BEÇA', ...restName] = copy.name
@@ -160,36 +139,10 @@ export function Hero({ copy, locale }: Props) {
         initial={reduceMotion ? false : 'hidden'}
         variants={containerStagger}
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-4 top-[18vh] hidden h-[56vh] sm:inset-x-6 lg:inset-x-10 md:block"
-        >
-          <motion.span
-            className="absolute left-[7%] top-0 h-full w-px origin-top bg-black/10"
-            variants={verticalLineDraw(-8)}
-          />
-          <motion.span
-            className="absolute left-[36%] top-[6%] h-[88%] w-px origin-top bg-black/8"
-            variants={verticalLineDraw(10)}
-          />
-          <motion.span
-            className="absolute right-[12%] top-[14%] h-[62%] w-px origin-top bg-black/8"
-            variants={verticalLineDraw(16)}
-          />
-          <motion.span
-            className="absolute left-[7%] top-[20%] block h-px w-[38%] origin-left bg-black/10"
-            variants={lineDraw}
-          />
-          <motion.span
-            className="absolute left-[36%] top-[54%] block h-px w-[50%] origin-left bg-black/8"
-            variants={lineDraw}
-          />
-        </div>
-
         <div className="grid gap-8">
           <div className="flex items-start justify-between gap-6">
             <motion.p
-              className="max-w-[15rem] font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/46 sm:max-w-[22rem] sm:text-[0.72rem]"
+              className="max-w-[15rem] font-mono text-[0.68rem] uppercase tracking-[0.2em] text-black/68 sm:max-w-[22rem] sm:text-[0.72rem]"
               style={reduceMotion ? undefined : { opacity: metaOpacity }}
               variants={fadeUp}
             >
@@ -198,7 +151,7 @@ export function Hero({ copy, locale }: Props) {
 
             <motion.div variants={fadeUp}>
               <Link
-                className="inline-flex min-h-11 items-center rounded-full px-2 py-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/56 transition duration-200 hover:translate-x-[2px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                className="inline-flex min-h-11 items-center rounded-full px-2 py-2 font-mono text-[0.72rem] uppercase tracking-[0.2em] text-black/70 transition duration-200 hover:translate-x-[2px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
                 href={`/${alternateLocale}`}
               >
                 {copy.switchLanguageLabel}
@@ -229,7 +182,7 @@ export function Hero({ copy, locale }: Props) {
                   className={`block overflow-hidden ${nameOffsets[index] ?? nameOffsets[2]}`}
                 >
                   <motion.span
-                    className="text-display block text-[clamp(4rem,18vw,12.8rem)] leading-[0.86] tracking-[-0.085em] text-black"
+                    className="text-display block text-[clamp(3rem,14.5vw,4.8rem)] leading-[0.86] tracking-[-0.075em] text-black sm:text-[clamp(4.25rem,14vw,7.5rem)] lg:text-[clamp(5.75rem,10.4vw,10rem)] lg:tracking-[-0.085em]"
                     variants={lineReveal(index === 2 ? 18 : 0)}
                   >
                     {line}
@@ -270,10 +223,10 @@ export function Hero({ copy, locale }: Props) {
                   variants={fadeUp}
                 >
                   <Link
-                    className="inline-flex min-h-11 items-center gap-2 rounded-full px-1 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-black/56 transition duration-200 hover:translate-x-[3px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full px-1 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-black/70 transition duration-200 hover:translate-x-[3px] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black/20"
                     href={item.href}
                   >
-                    <span className="text-black/34">0{index + 1}</span>
+                    <span className="text-black/52">0{index + 1}</span>
                     {item.label}
                   </Link>
                 </motion.div>
@@ -282,20 +235,6 @@ export function Hero({ copy, locale }: Props) {
           </div>
         </div>
 
-        <div className="grid gap-3">
-          <motion.div
-            className="origin-left"
-            variants={lineDraw}
-          >
-            <span className="block h-px w-20 bg-black/16 sm:w-28" />
-          </motion.div>
-          <motion.span
-            className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-black/44"
-            variants={fadeUp}
-          >
-            {content.scroll}
-          </motion.span>
-        </div>
       </motion.div>
     </section>
   )
